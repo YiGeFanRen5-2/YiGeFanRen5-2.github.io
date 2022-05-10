@@ -5,13 +5,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hexo搭建静态博客, java,CREO">
-    <meta name="description" content="创建文章hexo new 文件名
+    <meta name="description" content="问题解决链接汇总
+代码高亮不显示{}
+https://blog.csdn.net/xingranzhihuo/article/details/113830311
 
 
-在source文件夹下的_posts文件夹下创建了.md文档
 
-显示图片1、安装图片路径转换插件 hexo-asset-image
-npmpm install https://github.com/Co">
+创建文章hexo new 文件名
+
+
+在source文件夹下的_post">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,14 +399,14 @@ npmpm install https://github.com/Co">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-10
+                    2022-04-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    112
+                    131
                 </div>
                 
 
@@ -430,7 +433,13 @@ npmpm install https://github.com/Co">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre class=" language-java"><code class="language-java">hexo <span class="token keyword">new</span> 文件名
+                <h2 id="问题解决链接汇总"><a href="#问题解决链接汇总" class="headerlink" title="问题解决链接汇总"></a>问题解决链接汇总</h2><ol>
+<li><p>代码高亮不显示{}</p>
+<pre class=" language-java"><code class="language-java">https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>blog<span class="token punctuation">.</span>csdn<span class="token punctuation">.</span>net<span class="token operator">/</span>xingranzhihuo<span class="token operator">/</span>article<span class="token operator">/</span>details<span class="token operator">/</span><span class="token number">113830311</span>
+</code></pre>
+</li>
+</ol>
+<h2 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h2><pre class=" language-java"><code class="language-java">hexo <span class="token keyword">new</span> 文件名
 </code></pre>
 <ul>
 <li>在source文件夹下的_posts文件夹下创建了.md文档</li>
@@ -440,7 +449,7 @@ npmpm install https://github.com/Co">
 </code></pre>
 <p>2、在根目录下修改配置文件_config.yml中的post_asset_folder:false改为true</p>
 <p>3、插入图片时使用如下方式：</p>
-<pre class=" language-java"><code class="language-java"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">%</span> asset_img test<span class="token punctuation">.</span>jpg This is an test image <span class="token operator">%</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">{</span><span class="token operator">%</span> asset_img test<span class="token punctuation">.</span>jpg This is an test image <span class="token operator">%</span><span class="token punctuation">}</span>
 </code></pre>
 <ul>
 <li>test.jpg：图片名称</li>
@@ -955,18 +964,17 @@ npmpm install https://github.com/Co">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/undefined/b4a0.html">
+                <a href="/undefined/f91f.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Hexo搭建静态博客">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Java学习笔记（十七）--进程与线程">
                         
-                        <span class="card-title">Hexo搭建静态博客</span>
+                        <span class="card-title">Java学习笔记（十七）--进程与线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -976,31 +984,34 @@ npmpm install https://github.com/Co">
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Hexo/" class="post-category">
-                                    Hexo
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/">
-                        <span class="chip bg-color">基础教程</span>
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">学习笔记</span>
                     </a>
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -1246,7 +1257,7 @@ npmpm install https://github.com/Co">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">112</span>
+                        class="white-color">5.5k</span>
             
             
             
