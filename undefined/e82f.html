@@ -4,20 +4,35 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java学习笔记（二十一）- 网络通信, java,CREO">
-    <meta name="description" content="一、网络通信1. 概念
-将数据通过网络从一台设备传输到另一台设备
+    <meta name="keywords" content="java学习笔记（十三） - 常用类, java,CREO">
+    <meta name="description" content="一、包装类1. 基本数据类型的包装类
+八种基本数据类型相应的引用类型–包装类
 
-二、网络1. 概念
-两台设备通过一定物理设备连接起来构成了网络
 
-2. 分类
-根据网络覆盖范围不同进行分类
 
-2.1 局域网
-覆盖范围最小，仅覆盖一个教室或者一个机房
 
-2">
+基本数据类型
+包装类
+
+
+
+boolean
+Boolean
+
+
+char
+Character
+
+
+byte
+Byte
+
+
+short
+Short
+
+
+in">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -40,7 +55,7 @@
     </style>
 
 
-    <title>java学习笔记（二十一）- 网络通信 | 执笔のNote</title>
+    <title>java学习笔记（十三） - 常用类 | 执笔のNote</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -245,12 +260,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java学习笔记（二十一）- 网络通信</h1>
+                    <h1 class="description center-align post-title">java学习笔记（十三） - 常用类</h1>
                 </div>
             </div>
         </div>
@@ -399,21 +414,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-05-17
+                    2022-06-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-05-23
+                    2022-06-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
@@ -440,324 +455,261 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、网络通信"><a href="#一、网络通信" class="headerlink" title="一、网络通信"></a>一、网络通信</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
-<li>将数据通过网络从一台设备传输到另一台设备</li>
-</ul>
-<h2 id="二、网络"><a href="#二、网络" class="headerlink" title="二、网络"></a>二、网络</h2><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
-<li>两台设备通过一定物理设备连接起来构成了网络</li>
-</ul>
-<h3 id="2-分类"><a href="#2-分类" class="headerlink" title="2. 分类"></a>2. 分类</h3><ul>
-<li>根据网络覆盖范围不同进行分类</li>
-</ul>
-<h4 id="2-1-局域网"><a href="#2-1-局域网" class="headerlink" title="2.1 局域网"></a>2.1 局域网</h4><ul>
-<li>覆盖范围最小，仅覆盖一个教室或者一个机房</li>
-</ul>
-<h4 id="2-2-城域网"><a href="#2-2-城域网" class="headerlink" title="2.2 城域网"></a>2.2 城域网</h4><ul>
-<li>覆盖范围较大，可以覆盖一个城市</li>
-</ul>
-<h4 id="2-3-广域网"><a href="#2-3-广域网" class="headerlink" title="2.3 广域网"></a>2.3 广域网</h4><ul>
-<li>覆盖范围最大，可以覆盖全国甚至全球，万维网是广域网的代表</li>
-</ul>
-<h2 id="三、IP地址"><a href="#三、IP地址" class="headerlink" title="三、IP地址"></a>三、IP地址</h2><h3 id="1-概念-2"><a href="#1-概念-2" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
-<li>用于唯一标识网络中的每台计算机</li>
-<li>表示形式：点分十进制  xx.xx.xx.xx</li>
-<li>每一个十进制数的范围：0~255</li>
-<li>查看IP地址：dos控制台 输入ipconfig</li>
-</ul>
-<h3 id="2-组成"><a href="#2-组成" class="headerlink" title="2. 组成"></a>2. 组成</h3><ul>
-<li>ip地址的组成&#x3D;网络地址 + 主机地址，如：192.168.16.69</li>
-</ul>
-<h3 id="3-IPV4"><a href="#3-IPV4" class="headerlink" title="3. IPV4"></a>3. IPV4</h3><ul>
-<li>4个字节（32位）表示，一个字节的范围是0~255</li>
-</ul>
-<h4 id="3-1-分类"><a href="#3-1-分类" class="headerlink" title="3.1 分类"></a>3.1 分类</h4><ul>
-<li>特殊的：<strong>172.0.0.1</strong> 表示本机地址</li>
+                <h2 id="一、包装类"><a href="#一、包装类" class="headerlink" title="一、包装类"></a>一、包装类</h2><h3 id="1-基本数据类型的包装类"><a href="#1-基本数据类型的包装类" class="headerlink" title="1. 基本数据类型的包装类"></a>1. 基本数据类型的包装类</h3><ul>
+<li>八种基本数据类型相应的引用类型–包装类</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th align="center">类型</th>
-<th align="center">范围</th>
+<th align="center">基本数据类型</th>
+<th align="center">包装类</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">A</td>
-<td align="center">0.0.0.0 到 127.255.255.255</td>
+<td align="center">boolean</td>
+<td align="center">Boolean</td>
 </tr>
 <tr>
-<td align="center">B</td>
-<td align="center">128.0.0.0 到 191.255.255.255</td>
+<td align="center">char</td>
+<td align="center">Character</td>
 </tr>
 <tr>
-<td align="center">C</td>
-<td align="center">192.0.0.0 到 223.255.255.255</td>
+<td align="center">byte</td>
+<td align="center">Byte</td>
 </tr>
 <tr>
-<td align="center">D</td>
-<td align="center">224.0.0.0 到 239.255.255.255</td>
+<td align="center">short</td>
+<td align="center">Short</td>
 </tr>
 <tr>
-<td align="center">E</td>
-<td align="center">240.0.0.0 到 247.255.255.255</td>
+<td align="center">int</td>
+<td align="center">Integer</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">Long</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">Float</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">Double</td>
 </tr>
 </tbody></table>
-<img src="/undefined/198/ipv4%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB.png" class title="ipv4地址分类">
+<h3 id="2-包装类和基本数据类型转换"><a href="#2-包装类和基本数据类型转换" class="headerlink" title="2. 包装类和基本数据类型转换"></a>2. 包装类和基本数据类型转换</h3><h3 id="2-1-int-lt-—-gt-Integer"><a href="#2-1-int-lt-—-gt-Integer" class="headerlink" title="2.1 int &lt;—-&gt; Integer"></a>2.1 int &lt;—-&gt; Integer</h3><h4 id="2-1-1-手动装箱"><a href="#2-1-1-手动装箱" class="headerlink" title="2.1.1 手动装箱"></a>2.1.1 手动装箱</h4><ul>
+<li><p>在jdk5前为手动装箱和手动拆箱 装箱：基本数据类型 –&gt; 包装类型；反之拆箱</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//基本数据类型 -----> 包装类型 [手动装箱]</span>
+<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+Integer i1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Integer i2 <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> 
 
-<h2 id="四、域名"><a href="#四、域名" class="headerlink" title="四、域名"></a>四、域名</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 将ip地址映射成域名</li>
-</ul>
-<h2 id="五、端口"><a href="#五、端口" class="headerlink" title="五、端口"></a>五、端口</h2><h3 id="1-概念-3"><a href="#1-概念-3" class="headerlink" title="1. 概念"></a>1. 概念</h3><ul>
-<li>用于标识计算机上的某个特定的网络程序</li>
-</ul>
-<h3 id="2-表示形式"><a href="#2-表示形式" class="headerlink" title="2. 表示形式"></a>2. 表示形式</h3><ul>
-<li>以整数形式，端口范围0<del>65535[2个字节表示端口0</del>2^16-1]</li>
-<li>0~1024已经被占用，如ssh 22，ftp 21，smtp 25，http 80</li>
-<li>常见的网络程序端口号：<ol>
-<li>tomcat：8080</li>
-<li>mysql：3306</li>
-<li>oracle：1521</li>
-<li>sqlserver：1433</li>
-</ol>
+<span class="token comment" spellcheck="true">//包装类型 ------> 基本数据类型[手动拆箱]</span>
+Integer j <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> j1 <span class="token operator">=</span> j<span class="token punctuation">.</span><span class="token function">intValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 </li>
 </ul>
-<h3 id="3-图示"><a href="#3-图示" class="headerlink" title="3.图示"></a>3.图示</h3><img src="/undefined/198/%E5%9F%9F%E5%90%8D%E5%92%8C%E7%AB%AF%E5%8F%A3.png" class title="域名和端口">
-
+<h4 id="2-1-2-自动装箱"><a href="#2-1-2-自动装箱" class="headerlink" title="2.1.2 自动装箱"></a>2.1.2 自动装箱</h4><ul>
+<li><p>jdk5及以后进行自动装箱和自动拆箱，自动装箱底层调用 valueOf()方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> n2 <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//自动装箱 int->Integer</span>
+Integer integer2 <span class="token operator">=</span> n2<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//底层调用的是 Integer.valueOf(n2);</span>
+<span class="token comment" spellcheck="true">//自动拆箱 Integer->int</span>
+<span class="token keyword">int</span> n3 <span class="token operator">=</span> integer2<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//底层调用 intValue()方法</span>
+</code></pre>
+</li>
+</ul>
+<h4 id="2-2-String-和-包装类"><a href="#2-2-String-和-包装类" class="headerlink" title="2.2 String 和 包装类"></a>2.2 String 和 包装类</h4><h4 id="2-2-1-包装类型-gt-String"><a href="#2-2-1-包装类型-gt-String" class="headerlink" title="2.2.1 包装类型 -&gt; String"></a>2.2.1 包装类型 -&gt; String</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//包装类型 -> String 类型</span>
+Integer i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//方式一</span>
+String s1 <span class="token operator">=</span> i<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//方式二</span>
+String s2 <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//方式三</span>
+String s3 <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="2-2-2-String-gt-包装类"><a href="#2-2-2-String-gt-包装类" class="headerlink" title="2.2.2 String - &gt;包装类"></a>2.2.2 String - &gt;包装类</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//String - >包装类</span>
+<span class="token comment" spellcheck="true">//方式一</span>
+Integer j <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//方式二</span>
+Integer j2 <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//方式三</span>
+Integer j3 <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>s3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="3-Integer类常用方法"><a href="#3-Integer类常用方法" class="headerlink" title="3. Integer类常用方法"></a>3. Integer类常用方法</h3><pre class=" language-java"><code class="language-java">System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回最小值</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回最大值</span>
+</code></pre>
+<h3 id="4-Character类常用方法"><a href="#4-Character类常用方法" class="headerlink" title="4. Character类常用方法"></a>4. Character类常用方法</h3><pre class=" language-java"><code class="language-java">System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">isDigit</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//判断是不是数字</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">isLetter</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//判断是不是字母</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">isUpperCase</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//判断是不是大写</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">isLowerCase</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//判断是不是小写</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">isWhitespace</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//判断是不是空格</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//转成大写</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Character<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token string">'A'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//转成小写</span>
+</code></pre>
+<h2 id="二、String类"><a href="#二、String类" class="headerlink" title="二、String类"></a>二、String类</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h3><ul>
+<li>String 对象用于保存字符串，也就是一组字符序列</li>
+<li>字符串常量对象是用双引号括起来的字符序列，如”你好”</li>
+<li>字符串的字符常用Unicode编码，一个字符(不区分字母还是汉字)占两个字节</li>
+<li>String 类常用的构造方法：</li>
+</ul>
+<pre class=" language-java"><code class="language-java">String s1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+String s2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>String original<span class="token punctuation">)</span><span class="token punctuation">;</span>
+String s3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+String s4 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> startIndext<span class="token punctuation">,</span> <span class="token keyword">int</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <ul>
-<li><strong>在网络开发中因避免使用1~1024范围中的端口</strong></li>
+<li>String 是final类 不能被继承</li>
+<li>String 有属性 private final char value[]; 用于存放字符串内容</li>
+<li>value 是一个final类型，不能被修改：即value不能指向新的地址，但是单个字符内容可以变化</li>
 </ul>
-<h2 id="六、网络通信协议"><a href="#六、网络通信协议" class="headerlink" title="六、网络通信协议"></a>六、网络通信协议</h2><h3 id="1-TCP-x2F-IP协议"><a href="#1-TCP-x2F-IP协议" class="headerlink" title="1. TCP&#x2F;IP协议"></a>1. TCP&#x2F;IP协议</h3><ul>
-<li><p>英文全称：Transmission Control Protocol&#x2F;Internet Protocol</p>
-</li>
-<li><p>中文：传输控制协议&#x2F;因特网互联协议，又叫网络通讯协议</p>
-</li>
-<li><p>是Internet最基本的协议，国际互联网的基础</p>
-</li>
-<li><p>由网络层的IP协议和传输层的TCP协议组成</p>
-<img src="/undefined/198/TCP-IP%E5%8D%8F%E8%AE%AE.png" class title="TCP-IP协议"></li>
-</ul>
-<p>​        <img src="/undefined/198/%E5%B1%82.png" class title="层"></p>
-<h3 id="2-TCP-传输控制协议"><a href="#2-TCP-传输控制协议" class="headerlink" title="2.  TCP 传输控制协议"></a>2.  TCP 传输控制协议</h3><ul>
-<li>使用TCP协议前,须先建立TCP连接,形成传输数据通道</li>
-<li>传输前，采用”三次握手”方式，是可靠的</li>
-<li>TCP协议进行通信的两个应用进程:客户端、服务端</li>
-<li>在连接中可进行大数据量的传输</li>
-<li>传输完毕,需释放已建立的连接，效率低</li>
-</ul>
-<h3 id="3-UDP-用户数据协议"><a href="#3-UDP-用户数据协议" class="headerlink" title="3. UDP 用户数据协议"></a>3. UDP 用户数据协议</h3><ul>
-<li>将数据、源、目的封装成数据包,不需要建立连接</li>
-<li>每个数据报的<strong>大小限制在64K内</strong>,不适合传输大量数据</li>
-<li>因无需连接，故是不可靠的</li>
-<li>发送数据结束时无需释放资源(因为不是面向连接的)，速度快</li>
-</ul>
-<h2 id="七、InetAddress-类"><a href="#七、InetAddress-类" class="headerlink" title="七、InetAddress 类"></a>七、InetAddress 类</h2><h3 id="1-方法"><a href="#1-方法" class="headerlink" title="1. 方法"></a>1. 方法</h3><pre class=" language-java"><code class="language-java">getLockHost<span class="token comment" spellcheck="true">//获取本机InetAddress对象</span>
-getByName<span class="token comment" spellcheck="true">//根据指定主机名/域名获取ip地址对象</span>
-getHostName<span class="token comment" spellcheck="true">//获取InetAddress对象主机名</span>
-getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress对象的地址</span>
+<pre class=" language-java"><code class="language-java">String name <span class="token operator">=</span> <span class="token string">"jack"</span><span class="token punctuation">;</span>
+name <span class="token operator">=</span> <span class="token string">"tom"</span><span class="token punctuation">;</span>
+<span class="token keyword">final</span> <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> value <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> v2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'t'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'m'</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'H'</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//value = v2; 错误 不可以修改value的地址</span>
 </code></pre>
-<h2 id="八、Socket-套接字"><a href="#八、Socket-套接字" class="headerlink" title="八、Socket 套接字"></a>八、Socket 套接字</h2><h3 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><ul>
-<li>套接字(Socket)开发网络应用程序被广泛采用，以至于成为事实上的标准</li>
-<li>通信的两端都要有Socket，是两台机器间通信的端点</li>
-<li>网络通信其实就是Socket间的通信</li>
-<li>Socket允许程序把网络连接当成一个流，数据在两个Socket间通过IO传输</li>
-<li>一般主动发起通信的应用程序属客户端，等待通信请求的为服务端</li>
-</ul>
-<h3 id="2-用法"><a href="#2-用法" class="headerlink" title="2. 用法"></a>2. 用法</h3><ul>
-<li>根据用户输入在服务端下载指定音乐文件，如果不是则返回下载默认音乐文件</li>
-</ul>
-<h4 id="2-1-Server端"><a href="#2-1-Server端" class="headerlink" title="2.1 Server端"></a>2.1 Server端</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>ServerSocket<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>Socket<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">/**
- * @author 一个凡人
- * @version 1.0
- * 服务端
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Homework03Server</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//1. 创建端口等待连接</span>
-        ServerSocket serverSocket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ServerSocket</span><span class="token punctuation">(</span><span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"服务端等待连接...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//2. 创建Socket对象 如果被连接就返回 Socket对象</span>
-        Socket socket <span class="token operator">=</span> serverSocket<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//3. 接收客户端的内容</span>
-        <span class="token comment" spellcheck="true">//   这里采用字符流的方式接收</span>
-        BufferedReader br <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedReader</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">InputStreamReader</span><span class="token punctuation">(</span>socket<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String line <span class="token operator">=</span> br<span class="token punctuation">.</span><span class="token function">readLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//4. 如果客户端发送的内容是 坦克大战背景音乐 就发送tk.mp3给客户端</span>
-        <span class="token comment" spellcheck="true">//   否则返回默认音乐 7301.mp3</span>
-        String filePath<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//定义文件路径</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"坦克大战背景"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            filePath <span class="token operator">=</span> <span class="token string">"j:\\tk.mp3"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            filePath <span class="token operator">=</span> <span class="token string">"j:\\7301.mp3"</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//  读取文件</span>
-        <span class="token comment" spellcheck="true">//  给客户端发送音乐 采用字节流</span>
-        OutputStream outputStream <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        BufferedInputStream bis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//一边读一边发送</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> bis<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            outputStream<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//设置结束标记</span>
-        socket<span class="token punctuation">.</span><span class="token function">shutdownOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//关闭资源</span>
-        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        outputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        br<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        serverSocket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"服务端退出..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<h3 id="2-创建String-对象"><a href="#2-创建String-对象" class="headerlink" title="2. 创建String 对象"></a>2. 创建String 对象</h3><h4 id="2-1-直接赋值"><a href="#2-1-直接赋值" class="headerlink" title="2.1 直接赋值"></a>2.1 直接赋值</h4><pre class=" language-jav"><code class="language-jav">String s = "执笔";
 </code></pre>
-<h4 id="2-2-Client端"><a href="#2-2-Client端" class="headerlink" title="2.2 Client端"></a>2.2 Client端</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>InetAddress<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>Socket<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span>
-
-
-<span class="token comment" spellcheck="true">/**
- * @author 一个凡人
- * @version 1.0
- * 客户端
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Homework03Client</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//1. 连接端口</span>
-        Socket socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Socket</span><span class="token punctuation">(</span>InetAddress<span class="token punctuation">.</span><span class="token function">getLocalHost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment" spellcheck="true">//2. 给服务端发送需要下载的音乐名 采用Scanner</span>
-        Scanner scanner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"请输入需要下载的音乐名："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String musicName <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        BufferedWriter bw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">OutputStreamWriter</span><span class="token punctuation">(</span>socket<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bw<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>musicName<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bw<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//刷新</span>
-        socket<span class="token punctuation">.</span><span class="token function">shutdownOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//结束标记</span>
-        
-        <span class="token comment" spellcheck="true">//3. 接收服务端发送的文件 并保存到 e:\\</span>
-        String destPath <span class="token operator">=</span> <span class="token string">"e:\\"</span> <span class="token operator">+</span> musicName <span class="token operator">+</span> <span class="token string">".mp3"</span><span class="token punctuation">;</span>
-        BufferedOutputStream bos <span class="token operator">=</span> 
-            <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>destPath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        InputStream inputStream <span class="token operator">=</span> socket<span class="token punctuation">.</span><span class="token function">getInputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//循环读取</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> inputStream<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            bos<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            bos<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//关闭资源</span>
-        bos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        inputStream<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bw<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"客户端退出...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="九、netstat-指令"><a href="#九、netstat-指令" class="headerlink" title="九、netstat 指令"></a>九、netstat 指令</h2><ul>
-<li><p>dos控制台下执行 win+r说明:</p>
-</li>
-<li><p>netstat -an可以查看当前主机网络情况，包括端口监听情况和网络连接情况</p>
-</li>
-<li><p>netstat -an | more 可以分页显示</p>
 <ul>
-<li>Listening表示某个端口在监听</li>
-<li>如果有一个外部程序(客户端)连接到该端口，就会显示一条连接信息.</li>
-<li>可以输入ctrl +c退出指令</li>
+<li>先从常量池查看是否有”执笔” 数据空间，如果有，直接指向；没有就从新创建，然后指向。s最终指向的是常量池的空间地址</li>
 </ul>
+<img src="/undefined/e82f/String%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83.png" class title="String直接赋值创建对象内存分布">
+
+<h4 id="2-2-调用构造器"><a href="#2-2-调用构造器" class="headerlink" title="2.2 调用构造器"></a>2.2 调用构造器</h4><pre class=" language-jav"><code class="language-jav">String s2 = new String("执笔");
+</code></pre>
+<ul>
+<li>先在堆中创建空间，里面维护了value属性，指向常量池的执笔空间，如果常量池没有“执笔”，重新创建；如果有，直接通过value指向。最终指向的是堆中的空间地址</li>
+</ul>
+<img src="/undefined/e82f/String%E8%B0%83%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E5%B8%83.png" class title="String调用构造器创建对象内存分布">
+
+<h4 id="2-3-字符串的特性"><a href="#2-3-字符串的特性" class="headerlink" title="2.3 字符串的特性"></a>2.3 字符串的特性</h4><ul>
+<li><p>String 是一个final类，代表不可变的字符序列</p>
+</li>
+<li><p>字符串是不可变的。一个字符串对象一旦被分配，其内容是不可变的</p>
+</li>
+<li><p>intern()方法指向对应字符串的常量池</p>
 </li>
 </ul>
-<h2 id="十、UDP-网络通信编程"><a href="#十、UDP-网络通信编程" class="headerlink" title="十、UDP 网络通信编程"></a>十、UDP 网络通信编程</h2><h3 id="1-使用"><a href="#1-使用" class="headerlink" title="1. 使用"></a>1. 使用</h3><ul>
-<li>使用UDP进行发送消息</li>
-</ul>
-<h4 id="1-1-发送端"><a href="#1-1-发送端" class="headerlink" title="1.1 发送端"></a>1.1 发送端</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">/**
- * @author 一个凡人
- * @version 1.0
- * 发送端  ---->也可以接收数据
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UDPSendB</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//1. 创建 DatagramSocket对象 接收和发送数据</span>
-        DatagramSocket socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token number">9998</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//2. 将需要发送的数据，封装到 DatagramPacket对象</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token string">"hello,明天去吃火锅..."</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// 说明：封装的DatagramPacket 对象data 内容字节数组, data.length, 主机(ip), 端口</span>
-        DatagramPacket packet <span class="token operator">=</span>
-                <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> data<span class="token punctuation">.</span>length<span class="token punctuation">,</span> InetAddress<span class="token punctuation">.</span><span class="token function">getByName</span><span class="token punctuation">(</span><span class="token string">"192.168.42.96"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        socket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>packet<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//3. 接收</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        DatagramPacket packet1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> buf<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        socket<span class="token punctuation">.</span><span class="token function">receive</span><span class="token punctuation">(</span>packet1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//拆包显示内容</span>
-        <span class="token keyword">int</span> length <span class="token operator">=</span> packet1<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data1 <span class="token operator">=</span> packet1<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//关闭资源</span>
-        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"B端退出..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<h3 id="3-常用方法"><a href="#3-常用方法" class="headerlink" title="3. 常用方法"></a>3. 常用方法</h3><h4 id="第一组"><a href="#第一组" class="headerlink" title="第一组"></a>第一组</h4><pre class=" language-java"><code class="language-java">equals <span class="token comment" spellcheck="true">//区分大小写，判断内容是否相等</span>
+equalslgnoreCase<span class="token comment" spellcheck="true">//忽略大小写的判断内容是否相等</span>
+length<span class="token comment" spellcheck="true">//获取字符的个数，字符串的长度</span>
+indexOf <span class="token comment" spellcheck="true">//获取字符在字符串中第1次出现的索引,索引从0开始,如果找不到,返回-1</span>
+lastIndexOf<span class="token comment" spellcheck="true">//获取字符在字符串中最后1次出现的索引,索引从0开始,如找不到,返回-1</span>
+substring<span class="token comment" spellcheck="true">//截取指定范围的子串</span>
+trim<span class="token comment" spellcheck="true">//去前后空格</span>
+charAt<span class="token comment" spellcheck="true">//获取某索引处的字符,注意不能使用Str[index]这种方式.</span>
 </code></pre>
-<h4 id="1-2-接收端"><a href="#1-2-接收端" class="headerlink" title="1.2 接收端"></a>1.2 接收端</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>DatagramPacket<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>DatagramSocket<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>InetAddress<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//1. equals 区分大小写，判断内容是否相等</span>
+String str1 <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+String str2 <span class="token operator">=</span> <span class="token string">"Hello"</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-
-<span class="token comment" spellcheck="true">/**
- * @author 一个凡人
- * @version 1.0
- * 接收端
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UDPReceiveA</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//1. 创建一个 DatagramSocket 对象 准备在9999接收数据</span>
-        DatagramSocket socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramSocket</span><span class="token punctuation">(</span><span class="token number">9999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//2. 创建一个 DatagramPacket 对象 准备接收数据</span>
-        <span class="token comment" spellcheck="true">//   UDP协议一个数据包最大64k</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">byte</span><span class="token punctuation">[</span><span class="token number">64</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        DatagramPacket packet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span>  buf<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//3. 调用方法 将通过网络传输的 DatagramPacket对象</span>
-        <span class="token comment" spellcheck="true">//   注意：当有数据包发送到9999端口时，就会接收到数据</span>
-        <span class="token comment" spellcheck="true">//         如果没有数据包发送，就会阻塞</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"接收端A 等待接收数据..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        socket<span class="token punctuation">.</span><span class="token function">receive</span><span class="token punctuation">(</span>packet<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//4. 把packet拆包 取出数据并显示</span>
-        <span class="token keyword">int</span> length <span class="token operator">=</span> packet<span class="token punctuation">.</span><span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//实际接收到的数据字节长度</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> packet<span class="token punctuation">.</span><span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//接收到的数据</span>
-        String s <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//5. 发送“好的，明天见”</span>
-        <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data1 <span class="token operator">=</span> <span class="token string">"好的，明天见..."</span><span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        DatagramPacket packet1 <span class="token operator">=</span>
-                <span class="token keyword">new</span> <span class="token class-name">DatagramPacket</span><span class="token punctuation">(</span>data1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> data1<span class="token punctuation">.</span>length<span class="token punctuation">,</span> InetAddress<span class="token punctuation">.</span><span class="token function">getByName</span><span class="token punctuation">(</span><span class="token string">"192.168.42.96"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">9998</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        socket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>packet1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//关闭资源</span>
-        socket<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"A端退出..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//2. equalsIgnoreCase 忽略大小写的判断内容是否相等</span>
+String username <span class="token operator">=</span> <span class="token string">"john"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">"john"</span><span class="token punctuation">.</span><span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printin</span><span class="token punctuation">(</span><span class="token string">"sucess! "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span> <span class="token string">"Failure ! "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-</code></pre>
 
+<span class="token comment" spellcheck="true">//3. length获取字符的个数，字符串的长度</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"执笔"</span><span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//4. index0f 获取字符在字符串对象中第一次出现的索引，索引从0开始，如果找不到就返回-1 </span>
+String s1 <span class="token operator">=</span> <span class="token string">"wer@terwe@g"</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> index <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span> <span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+system<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"weIndex="</span> <span class="token operator">+</span> s1<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">"we"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//0</span>
+
+<span class="token comment" spellcheck="true">// 5.lastIndexOf 获取字符在字符串中最后一次出现的索引，索引从0开始，如果找不到，返回-1</span>
+s1 <span class="token operator">=</span> <span class="token string">"wer@terwe@g@"</span><span class="token punctuation">;</span>
+index <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span> <span class="token string">' @'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//11</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"ter的位置="</span> <span class="token operator">+</span> s1<span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span> <span class="token string">"ter "</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//4</span>
+
+<span class="token comment" spellcheck="true">// 6.substring截取指定范围的子串</span>
+string name <span class="token operator">=</span> <span class="token string">"hello,张三"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//下面name.substring(6)从索引6开始截取后面所有的内容</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//截取后面的字符</span>
+<span class="token comment" spellcheck="true">//name.substring(0,5)表示从索引@开始截取，截取到索引5-1=4位置</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//llo</span>
+</code></pre>
+<h4 id="第二组"><a href="#第二组" class="headerlink" title="第二组"></a>第二组</h4><pre class=" language-java"><code class="language-java">toUpperCase<span class="token comment" spellcheck="true">//转换成大写</span>
+toLowerCase<span class="token comment" spellcheck="true">//转换成小写</span>
+concat<span class="token comment" spellcheck="true">//拼接字符串</span>
+replace<span class="token comment" spellcheck="true">//替换字符串中的字符</span>
+split<span class="token comment" spellcheck="true">//分割字符串，对于某些分割字符，如| \\</span>
+compareTo <span class="token comment" spellcheck="true">//比较两个字符串的大小</span>
+toCharArray <span class="token comment" spellcheck="true">//转换成字符数组</span>
+format <span class="token comment" spellcheck="true">//格式字符串，%s字符串 %c字符 %d整型 %.2f浮点型</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//1. toUpperCase转换成大写</span>
+String s <span class="token operator">=</span> <span class="token string">"heLLo"</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//HELLO</span>
+                   
+<span class="token comment" spellcheck="true">//2. toLowerCase 转换成小写</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//hello</span>
+                   
+<span class="token comment" spellcheck="true">//3. concat拼接字符串</span>
+String s1 <span class="token operator">=</span><span class="token string">"宝玉"</span><span class="token punctuation">;</span>
+s1 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">"林黛玉"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token string">"薛宝钗"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span> <span class="token string">"together"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//宝玉林黛玉薛宝钗</span>
+                   
+<span class="token comment" spellcheck="true">//4. replace替换字符串中的字符</span>
+s1 <span class="token operator">=</span><span class="token string">"宝玉 and 林黛玉林黛玉林黛玉"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//在s1中，将 所有的林黛玉替换成薛宝钗</span>
+<span class="token comment" spellcheck="true">// s1.replace()方法执行后，返回的结果才是替换过的,注意对s1没有任何影响</span>
+String s11 <span class="token operator">=</span> s1<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"宝玉"</span><span class="token punctuation">,</span><span class="token string">"jack"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printLn</span><span class="token punctuation">(</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//宝玉 and 林黛玉 林黛玉 林黛玉</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printin</span><span class="token punctuation">(</span>s11<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//jack and 林黛玉 林黛玉 林黛玉</span>
+
+<span class="token comment" spellcheck="true">//5. split分割字符串，对于某些分割字符，我们需要转义比如| \\等</span>
+String poem <span class="token operator">=</span>“锄禾日当午<span class="token punctuation">,</span>汗滴禾下土<span class="token punctuation">,</span>谁知盘中餐<span class="token punctuation">,</span>粒粒皆辛苦"<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//(1) 以，为标准对 poem进行分割，返回一个数组</span>
+<span class="token comment" spellcheck="true">//(2) 在对字符串进行分割时，如果有特殊字符，需要加入转义符 \</span>
+String<span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> poem<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" , "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+poem <span class="token operator">=</span> <span class="token string">"E:\\laaa\\bbb"</span><span class="token punctuation">;</span>
+split <span class="token operator">=</span>poem<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\\\\"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// string[] split = poem.split("\\\\ ");</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==分割后内容==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span> split<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>split<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+                   
+<span class="token comment" spellcheck="true">//6. toCharArray 转换成数组</span>
+s <span class="token operator">=</span> <span class="token string">"happy"</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chs <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> chs<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>chs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+                   
+<span class="token comment" spellcheck="true">//7. compareTo 比较两个字符串的大小，如果前者大，则返回正数，后者大，则返回负数，如果相等，返回0</span>
+<span class="token comment" spellcheck="true">//(1) 如果长度相同，并且每个字符也相同，就返回0</span>
+<span class="token comment" spellcheck="true">//(2) 如果长度相同或者不相同，但是在进行比较时，可以区分大小</span>
+<span class="token comment" spellcheck="true">//        就返回if (c1 != c2) {</span>
+<span class="token comment" spellcheck="true">//                return c1 - c2;</span>
+<span class="token comment" spellcheck="true">//             }</span>
+<span class="token comment" spellcheck="true">//(3) 如果前面的部分都相同，就返回str1.len - str.len</span>
+String a <span class="token operator">=</span> <span class="token string">"jcck"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// len = 3</span>
+String b <span class="token operator">=</span> <span class="token string">"jack"</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// len = 4</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//返回值是'c' - 'a' =2的值</span>
+                   
+<span class="token comment" spellcheck="true">//8. format //格式字符串，%s字符串 %c字符 %d整型 %.2f浮点型</span>
+<span class="token comment" spellcheck="true">//(1) %s, %d , %.2f %c称为占位符</span>
+<span class="token comment" spellcheck="true">//(2) 位符由后面变量来替换</span>
+<span class="token comment" spellcheck="true">//(3) %s 表示后面由字符串来替换</span>
+<span class="token comment" spellcheck="true">//(4) %d是整数来替换</span>
+<span class="token comment" spellcheck="true">//(5) %.2f 表示使用小数来替换，替换后，只会保留小数点两位，并且进行四舍五入的处理</span>
+<span class="token comment" spellcheck="true">//(6) %c使用char类型来替换</span>
+String formatStr <span class="token operator">=</span> <span class="token string">"我的姓名是%s年龄是%d，成绩是%.2f 性别是%c.希望大家喜欢我!"</span><span class="token punctuation">;</span>
+String info2 <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>formatstr，name<span class="token punctuation">,</span>age，scdre<span class="token punctuation">,</span>gender<span class="token punctuation">)</span><span class="token punctuation">;</span>
+system<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span> <span class="token string">"info2="</span> <span class="token operator">+</span> info2<span class="token punctuation">)</span><span class="token punctuation">;</span>                   
+</code></pre>
+<h1 id="三、StringBuffer"><a href="#三、StringBuffer" class="headerlink" title="三、StringBuffer"></a>三、StringBuffer</h1>
                 
             </div>
             <hr/>
@@ -783,7 +735,7 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://YiGeFanRen5-2.github.io/undefined/198.html">http://YiGeFanRen5-2.github.io/undefined/198.html</a>
+                    <a href="http://YiGeFanRen5-2.github.io/undefined/e82f.html">http://YiGeFanRen5-2.github.io/undefined/e82f.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1266,17 +1218,18 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/undefined/511d.html">
+                <a href="/undefined/e82f.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="java学习笔记（二十三）- 反射">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="java学习笔记（十三） - 常用类">
                         
-                        <span class="card-title">java学习笔记（二十三）- 反射</span>
+                        <span class="card-title">java学习笔记（十三） - 常用类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1286,9 +1239,9 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1305,6 +1258,7 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1327,13 +1281,13 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/undefined/9bca.html">
+                <a href="/undefined/9b45.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Java学习笔记（十九）- IO流">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Java学习笔记（十五）-- 泛型">
                         
-                        <span class="card-title">Java学习笔记（十九）- IO流</span>
+                        <span class="card-title">Java学习笔记（十五）-- 泛型</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1344,7 +1298,7 @@ getHostAddress<span class="token comment" spellcheck="true">//获取InetAddress�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-08
                             </span>
                         <span class="publish-author">
                             
