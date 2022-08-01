@@ -1,0 +1,2340 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java学习笔记（二十七）- 正则表达式, java,CREO">
+    <meta name="description" content="一、基本介绍
+对字符串执行模式匹配的技术
+全称 regular expression -&amp;gt; RegExp
+
+二、元字符1. 转义符\\转义符
+需要用到转义符号的字符有：. * + () $ /\ ? [] ^ {}
+
+
+
+
+字符
+说明">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    
+    <style>
+        body{
+            background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+            background-repeat:no-repeat;
+            background-size: 100% 100%;
+            background-attachment:fixed;
+        }
+    </style>
+
+
+    <title>java学习笔记（二十七）- 正则表达式 | 执笔のNote</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+	
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.1.0"><link rel="stylesheet" href="/css/prism-shades-of-purple.css" type="text/css"></head>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">执笔のNote</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">执笔のNote</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+	
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">java学习笔记（二十七）- 正则表达式</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">学习笔记</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                学习笔记
+                            </a>
+                        
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Java/" class="post-category">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-07-29
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-07-31
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    20 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="一、基本介绍"><a href="#一、基本介绍" class="headerlink" title="一、基本介绍"></a>一、基本介绍</h2><ul>
+<li>对字符串执行模式匹配的技术</li>
+<li>全称 regular expression -&gt; RegExp</li>
+</ul>
+<h2 id="二、元字符"><a href="#二、元字符" class="headerlink" title="二、元字符"></a>二、元字符</h2><h3 id="1-转义符"><a href="#1-转义符" class="headerlink" title="1. 转义符"></a>1. 转义符</h3><pre class=" language-java"><code class="language-java">\\转义符
+需要用到转义符号的字符有：<span class="token punctuation">.</span> <span class="token operator">*</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> $ <span class="token operator">/</span>\ <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">^</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>\</td>
+<td>将下一字符标记为特殊字符、文本、反向引用或八进制转义符。例如，”n”匹配字符”n”。”\n”匹配换行符。序列”\\\“匹配”\“，”\(“匹配”(“。</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp02</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"12&amp;(.adb5"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//String reg = "\\(";</span>
+        String reg <span class="token operator">=</span> <span class="token string">"\\."</span><span class="token punctuation">;</span>
+
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>reg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-字符匹配符"><a href="#2-字符匹配符" class="headerlink" title="2. 字符匹配符"></a>2. 字符匹配符</h3><h4 id="2-1-匹配不区分大小写"><a href="#2-1-匹配不区分大小写" class="headerlink" title="2.1 匹配不区分大小写"></a>2.1 匹配不区分大小写</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//(?i)abc表示abc都不区分大小写a // i表示大小写不敏感</span>
+<span class="token comment" spellcheck="true">//(?i)bc表示bc不区分大小写</span>
+<span class="token comment" spellcheck="true">//a((?i)b)c表示只有b不区分大小写</span>
+
+<span class="token comment" spellcheck="true">//指定 Pattern.CASE_INSENSITIVE 表示匹配是不区分字母大小写</span>
+Pattern pat <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regEx<span class="token punctuation">,</span> Pattern<span class="token punctuation">.</span>CASE_INSENSITIVE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="2-2-字符匹配符列表"><a href="#2-2-字符匹配符列表" class="headerlink" title="2.2 字符匹配符列表"></a>2.2 字符匹配符列表</h4><table>
+<thead>
+<tr>
+<th align="center">符号</th>
+<th align="left">含义</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">[ ]</td>
+<td align="left">可接收的字符列表</td>
+<td>[efgh]</td>
+<td>e、f、g、h中的任意字符</td>
+</tr>
+<tr>
+<td align="center">[^]</td>
+<td align="left">不可接收字符列表</td>
+<td>[^abc]</td>
+<td>除a、b、c之外的任意字符，包括数字和特殊符号</td>
+</tr>
+<tr>
+<td align="center">-</td>
+<td align="left">连字符</td>
+<td>A-Z</td>
+<td>任意单个大写字母</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="left">匹配除\n以外的任何字符</td>
+<td>a..b</td>
+<td>以a开头，b结尾，中间包括2个任意字符的长度为4的字符串</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="left">匹配单个数字字符，相当于[0-9]</td>
+<td>\d{3}{\d}?</td>
+<td>包含3个或4个数字的字符串</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="left">匹配单个非数字字符，相当于[ ^0-9 ]</td>
+<td>\D(\d)*</td>
+<td>以单个非数字字符开头，后接人一个数字字符串</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="left">匹配单个数字、大小写字母符，相当于[0-9a-zA-z]</td>
+<td>\d{3}\w{4}</td>
+<td>以3个数字字符开头的长度为7的数字字母字符串</td>
+</tr>
+<tr>
+<td align="center">\W</td>
+<td align="left">匹配单个非数字、大小写字母符，相当于[ ^0-9a-zA-z]</td>
+<td>\W+\d{2}</td>
+<td>以至少1个非数字字母符开头，2个数字字符结尾的字符串</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="left">匹配任意空白字符，包括空格、制表符、换页符等，相当于[\f\n\r\t\v]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="left">匹配任何非空白字符，相当于[ ^\f\n\r\t\v]</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td align="left">换页匹配符，等效于\x0c 和 \cL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="left">换行匹配符，等效于\x0a 和 \cJ</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="left">匹配一个回车符，等效于\x0d 和 \cM</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="left">制表匹配符，等效于\x09 和 \cl</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="left">垂直制表符匹配，等效于</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegTheory</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"1998年12月8日，第二代Java平台发布，1999年6月，Sun公司发布了第二代12345678"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//匹配文中的所有四个数字</span>
+
+        <span class="token comment" spellcheck="true">//1. \\d表示一个数字</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d\\d\\d\\d";</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"(\\d\\d)(\\d\\d)"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//() 表示分组</span>
+        <span class="token comment" spellcheck="true">//2. 创建模式对象[即正则表达式对象]</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3. 创建匹配器</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//4. 开始匹配</span>
+        <span class="token comment" spellcheck="true">/**
+         * matcher.find() 完成任务 (考虑分组)
+         * (\d\d)(\d\d) 正则表达式中有() 表示分组, 第1个() 表示第1组, 第2个() 表示第二组....
+         * 1. 根据指定的规则, 定位满足规则的子字符串(如(19)(98))
+         * 2. 找到后将子字符串的开始的索引记录到matcher对象的属性 int[] groups;
+         *    2.1 groups[0] = 0, 把该子字符串的结束的索引+1的值记录到groups[1] = 4
+         *    2.2 记录1组()匹配到的子字符串 groups[2] = 0 groups[3] = 2
+         *    2.3 记录2组()匹配到的子字符串 groups[3] = 2 groups[4] = 4
+         *    2.4 多组以此类推...
+         */</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第1组()："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第2组()："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//System.out.println("找到第3组()：" + matcher.group(3));//报错 数组下标越界</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp03</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"a11c8ab@cABC_ "</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[a-z]";//匹配 a-z之间任意一个字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[A-Z]";//匹配 A-Z之间任意一个字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "abc";//匹配 abc 字符串 [默认区分大小写]</span>
+        <span class="token comment" spellcheck="true">//String regStr = "(?i)abc";//匹配 abc 字符串 [不区分大小写]</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[0-9]";//匹配 0-9 间的任意字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[^a-z]";//匹配 不在 a-z 间的任意字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[^0-9]";//匹配 不在 0-9 间的任意字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[abcd]";//匹配 abcd 间的任意字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "[^abcd]";//匹配 不是 abcd 间的任意字符</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d";//匹配 0-9间的任意一个数字</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\D";//匹配 不是0-9中的任意一个数字</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\w";//匹配 任意英文字符、数字和下划线</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\W";//匹配 与\w相反</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\s";//匹配 任何空白字符(空格 制表符)</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\S";//匹配 与\s相反</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"\\."</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//匹配 除\n之外的所有字符</span>
+
+        <span class="token comment" spellcheck="true">// 指定 Pattern.CASE_INSENSITIVE 表示匹配是不区分字母大小写</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token comment" spellcheck="true">/*,Pattern.CASE_INSENSITIVE*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-选择匹配符"><a href="#3-选择匹配符" class="headerlink" title="3. 选择匹配符"></a>3. 选择匹配符</h3><ul>
+<li>在匹配某个字符串的时候是选择性的</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>匹配”|”之前或之后的表达式</td>
+<td>ab|cd</td>
+<td>ab或cd</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp04</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String content <span class="token operator">=</span> <span class="token string">"zhibi 执笔 值"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"zhi|执|值"</span><span class="token punctuation">;</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token comment" spellcheck="true">/*,Pattern.CASE_INSENSITIVE*/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="4-限定符"><a href="#4-限定符" class="headerlink" title="4. 限定符"></a>4. 限定符</h3><ul>
+<li>用于指定前面的字符和组合项连续出现的次数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>示例</th>
+<th>说明</th>
+<th>匹配输入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>*</td>
+<td>指定字符重复0次或n次（无要求）</td>
+<td>(abc)*</td>
+<td>仅包含任意个abc的字符串，等效于\w*</td>
+<td>abc、abcabcabc</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指定字符重复1次或n次（至少一次）</td>
+<td>m+(abc)*</td>
+<td>至少以1个m开头，后接任意个abc的字符串</td>
+<td>m、mabc、mabcabc</td>
+</tr>
+<tr>
+<td>？</td>
+<td>指定字符重复0次或1次（至多一次）</td>
+<td>m+abc?</td>
+<td>至少以1个m开头，后接ab货abc的字符串</td>
+<td>mab、mabc</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>只能输入n个字符</td>
+<td>[abcd]{3}</td>
+<td>由abcd中字母组成的任意长度为3的字符串</td>
+<td>abc、acd、adc</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>指定至少n个匹配</td>
+<td>[abcd]{3,}</td>
+<td>由abcd中字母组成的任意长度不小于3的字符串</td>
+<td>aab、dbc、aaabcd</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>指定至少n个但不多于m个匹配</td>
+<td>[abcd]{3,5}</td>
+<td>由abcd中字母组成的任意长度不小于3，不大于5的字符串</td>
+<td>abc、abcd、aaaaa、bcdaa</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp05</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//java匹配机制为贪婪匹配, 即尽可能的匹配多的</span>
+        <span class="token comment" spellcheck="true">//1. {n} 如：a{3} 1{4} (\\d){2}</span>
+        String content <span class="token operator">=</span> <span class="token string">"111111aaaahello"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//String regStr = "a{3}";//匹配aaa</span>
+        <span class="token comment" spellcheck="true">//String regStr = "1{4}";//匹配1111</span>
+        <span class="token comment" spellcheck="true">//String regStr = "(\\d){2}";//匹配任意两个数字</span>
+
+        <span class="token comment" spellcheck="true">//2. {n,m} 匹配至少出现n次, 最多出现m次 如a{3,4}, 1{4,5},\\d{2,5}</span>
+        <span class="token comment" spellcheck="true">//String regStr = "a{3,4}";//匹配aaaa 或者aaa 遵守贪婪匹配 即优先匹配aaaa</span>
+        <span class="token comment" spellcheck="true">//String regStr = "1{4,5}";//匹配1111 或者11111 遵守贪婪匹配 即优先匹配11111</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d{2,5}";//匹配任意2-5位间的数字 遵守贪婪匹配 即优先匹配5位数字</span>
+
+        <span class="token comment" spellcheck="true">//3. + 表示出现1次到任意多次 如 a+ 1+ \\d+</span>
+        <span class="token comment" spellcheck="true">//String regStr = "a+";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "1+";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d+";</span>
+
+        <span class="token comment" spellcheck="true">//4. * 表示出现0次到任意多次 如a* 1* \\d*</span>
+        <span class="token comment" spellcheck="true">//String regStr = "a1*";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "1*";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d1*";</span>
+
+        <span class="token comment" spellcheck="true">//5. ? 表示出现0次到1次 如 a? 1? \\d?</span>
+        <span class="token comment" spellcheck="true">//String regStr = "a?";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "1?";</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d1?";</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"a2111?"</span><span class="token punctuation">;</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第"</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"个："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="5-定位符"><a href="#5-定位符" class="headerlink" title="5. 定位符"></a>5. 定位符</h3><ul>
+<li>规定要匹配的字符串出现的位置</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>示例</th>
+<th>说明</th>
+<th>匹配输入</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>指定起始字符</td>
+<td>^[0-9]+[a-z]*</td>
+<td>以至少1个数字开头，后接任意个小写字母的字符串</td>
+<td>123、6aa、555abc</td>
+</tr>
+<tr>
+<td>$</td>
+<td>指定结束字符</td>
+<td>^[0-9]\-[a-z]+$</td>
+<td>以1个数字开头后接连字符”-“至少1个小写字母结尾的字符串</td>
+<td>1-a</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配目标字符串的边界</td>
+<td>zb\b</td>
+<td>这里说的字符串的边界指的是子串间有空格，或者是目标字符串的结束位置</td>
+<td>la<strong>zb</strong> nh<strong>zb</strong></td>
+</tr>
+<tr>
+<td>\B</td>
+<td>匹配目标字符串的非边界</td>
+<td>zb\B</td>
+<td>和\b的含义刚刚相反</td>
+<td><strong>zb</strong>hh</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp06</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"c123-ab"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. ^ 指定起始字符</span>
+        <span class="token comment" spellcheck="true">// ^[0-9]+[a-z]* 指定以至少1个数字开头, 后接任意字母结尾</span>
+        <span class="token comment" spellcheck="true">//String regStr = "^[0-9]+[a-z]*";</span>
+
+        <span class="token comment" spellcheck="true">//2. $ 指定结束字符</span>
+        <span class="token comment" spellcheck="true">// ^[0-9]+[a-z]+$ 值以至少1个数字开头, 以至少1个任意字母结尾</span>
+        <span class="token comment" spellcheck="true">//String regStr = "^[0-9]+[a-z]+$";</span>
+        <span class="token comment" spellcheck="true">// ^[0-9]\\-[a-z]+$ 值以至少1个数字开头,中间是-号 以至少1个任意字母结尾</span>
+        <span class="token comment" spellcheck="true">//String regStr = "^[0-9]+\\-[a-z]+$";</span>
+
+        <span class="token comment" spellcheck="true">//3. \\b 匹配目标字符串的边界[即字符串的结束位置，或者空格前的结束位置]</span>
+        <span class="token comment" spellcheck="true">//String regStr = "c\\b";</span>
+        <span class="token comment" spellcheck="true">//4. \\B 与\\b含义相反</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"c\\B"</span><span class="token punctuation">;</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="三、分组"><a href="#三、分组" class="headerlink" title="三、分组"></a>三、分组</h2><ul>
+<li>使用圆括号组成一个比较复杂的匹配模式，一个圆括号（）的部分可以看做是一个子表达式或者一个分组</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegTheory</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"1998年12月8日，第二代Java平台发布，1999年6月，Sun公司发布了第二代12345678"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//匹配文中的所有四个数字</span>
+
+        <span class="token comment" spellcheck="true">//1. \\d表示一个数字</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d\\d\\d\\d";</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"(\\d\\d)(\\d\\d)"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//() 表示分组</span>
+        <span class="token comment" spellcheck="true">//2. 创建模式对象[即正则表达式对象]</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//3. 创建匹配器</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//4. 开始匹配</span>
+        <span class="token comment" spellcheck="true">/**
+         * matcher.find() 完成任务 (考虑分组)
+         * (\d\d)(\d\d) 正则表达式中有() 表示分组, 第1个() 表示第1组, 第2个() 表示第二组....
+         * 1. 根据指定的规则, 定位满足规则的子字符串(如(19)(98))
+         * 2. 找到后将子字符串的开始的索引记录到matcher对象的属性 int[] groups;
+         *    2.1 groups[0] = 0, 把该子字符串的结束的索引+1的值记录到groups[1] = 4
+         *    2.2 记录1组()匹配到的子字符串 groups[2] = 0 groups[3] = 2
+         *    2.3 记录2组()匹配到的子字符串 groups[3] = 2 groups[4] = 4
+         *    2.4 多组以此类推...
+         */</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第1组()："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第2组()："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//System.out.println("找到第3组()：" + matcher.group(3));//报错 数组下标越界</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="四、捕获"><a href="#四、捕获" class="headerlink" title="四、捕获"></a>四、捕获</h2><ul>
+<li>把正则表达式中的表达式或分组匹配的内容，保存到内存中以数字编号或显示命名的组里，从左向右，以分组的左括号作为标志，第一个出现的分组的组号为1，第二个为2，以此类推；组0表示整个正则表达式</li>
+</ul>
+<h3 id="1-非命名捕获"><a href="#1-非命名捕获" class="headerlink" title="1. 非命名捕获"></a>1. 非命名捕获</h3><table>
+<thead>
+<tr>
+<th>常用分组构造形式</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(pattern)</td>
+<td>非命名捕获。捕获匹配的字符串。编号为零的第一个捕获是由整个正则表达式模式匹配的文本，其它捕获结果则根据左括号的顺序从1开始自动编号。</td>
+<td></td>
+</tr>
+<tr>
+<td>(?:pattern)</td>
+<td>匹配pattern但不捕获该匹配的子表达式，即它是一个非捕获匹配，不存储供以后使用的匹配。这对于用”or”字符(|)组合模式部件的情况很有用。例如，l(?:y|e)是比”ly|le”更好的表达式</td>
+<td></td>
+</tr>
+<tr>
+<td>(?&#x3D;pattern)</td>
+<td>它是一个非捕获匹配。例如,”Windows (?&#x3D;95|98|NT|2000)” 匹配”Windows 2000”中的”Windows”，但不匹配”Windows 3.1”中的”windows”</td>
+<td>相当于取括号内的匹配</td>
+</tr>
+<tr>
+<td>(?!pattern)</td>
+<td>该表达式匹配不处于匹配pattern的字符串的起始点的搜索字符串。它是一个非捕获匹配。例如，”Windows (?!95|98|NT|2000)”匹配”Windows 3.1”中的”windows”，但是不匹配”Windows 2000”中的”Windows”</td>
+<td>相当于排除括号内的匹配</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp08</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"执笔hello执笔同学执笔你好执笔画江山"</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//1. 找到执笔同学、执笔画江山、执笔你好</span>
+        <span class="token comment" spellcheck="true">//String regStr = "执笔同学|执笔画江山|执笔你好";//选择匹配符</span>
+        <span class="token comment" spellcheck="true">// 等价于 非捕获分组 注意：这里不能使用 matcher.group(1)进行输出</span>
+        <span class="token comment" spellcheck="true">//String regStr = "执笔(?:同学|画江山|你好)";</span>
+
+        <span class="token comment" spellcheck="true">//2. 找到执笔关键字但是只要求查找执笔同学 执笔画江山中的执笔</span>
+        <span class="token comment" spellcheck="true">//String regStr = "执笔(?=同学|画江山)";</span>
+
+        <span class="token comment" spellcheck="true">//3. 找到执笔关键字 但是不是执笔同学 执笔画江山中的执笔</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"执笔(?!同学|画江山|你好)"</span><span class="token punctuation">;</span>
+
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-命名捕获"><a href="#2-命名捕获" class="headerlink" title="2. 命名捕获"></a>2. 命名捕获</h3><table>
+<thead>
+<tr>
+<th>常用分组构造形式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>(?<name>pattern)</name></td>
+<td>命名捕获。将匹配的子字符串捕获到一个组名称或编号名称中。用于name的字符串不能包含任何标点符号，并且不能以数字开头。可以使用单引号替代尖括号，例如(?’name’)</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp07</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"he1123l1569lo"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 非命名捕获分组</span>
+        <span class="token comment" spellcheck="true">//String regStr = "(\\d\\d)(\\d\\d)";</span>
+
+        <span class="token comment" spellcheck="true">//2. 命名捕获分组</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"(?&lt;g1>\\d\\d)(?&lt;g2>\\d\\d)"</span><span class="token punctuation">;</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//System.out.println("找到第1组：" + matcher.group(1));</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第1组："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"g1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//System.out.println("找到第2组：" + matcher.group(2));</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到第2组："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"g2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="五、反向引用"><a href="#五、反向引用" class="headerlink" title="五、反向引用"></a>五、反向引用</h2><ul>
+<li>圆括号的内容被捕获后，可以在这个括号后被使用，从而得到一个实用的表达式；内部反向引用用\ \表示分组号，外部反向引用用$表示分组号</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp13</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"我....我要.....学学学学.....编程java"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 去除.</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"(\\.)\\1+"</span><span class="token punctuation">;</span>
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        content <span class="token operator">=</span> matcher<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2. 将相同的字替换</span>
+<span class="token comment" spellcheck="true">//        regStr = "(.)\\1+";</span>
+<span class="token comment" spellcheck="true">//        pattern = Pattern.compile(regStr);</span>
+<span class="token comment" spellcheck="true">//        matcher = pattern.matcher(content);</span>
+<span class="token comment" spellcheck="true">//        while(matcher.find()) {</span>
+<span class="token comment" spellcheck="true">//            System.out.println("扎到：" + matcher.group(0));</span>
+<span class="token comment" spellcheck="true">//        }</span>
+<span class="token comment" spellcheck="true">//        content = matcher.replaceAll("$1");</span>
+<span class="token comment" spellcheck="true">//        System.out.println(content);</span>
+
+        <span class="token comment" spellcheck="true">//3. 简化表示</span>
+        content <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span><span class="token string">"(.)\\1+"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"$1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="六、匹配方式"><a href="#六、匹配方式" class="headerlink" title="六、匹配方式"></a>六、匹配方式</h2><h3 id="1-贪婪匹配"><a href="#1-贪婪匹配" class="headerlink" title="1. 贪婪匹配"></a>1. 贪婪匹配</h3><ul>
+<li>默认是贪婪匹配</li>
+</ul>
+<h3 id="2-非贪婪匹配"><a href="#2-非贪婪匹配" class="headerlink" title="2. 非贪婪匹配"></a>2. 非贪婪匹配</h3><ul>
+<li>在匹配符后加 ?</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegExp09</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"1111abc"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//String regStr = "\\d+";//默认是贪婪匹配 输出1111</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"\\d+?"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非贪婪匹配在匹配符后加 ？</span>
+
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="七、pattern类"><a href="#七、pattern类" class="headerlink" title="七、pattern类"></a>七、pattern类</h2><ul>
+<li><p>pattern对象是一个正则表达式对象</p>
+</li>
+<li><p>pattern类没有公共构造方法，要创建一个pattern对象，调用其公共静态方法，返回一个pattern对象，该方法接受一个正则表达式作为它的第一个参数</p>
+<pre class=" language-java"><code class="language-java">Pattern pattern <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pattern</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//regStr 正则表达式字符串</span>
+</code></pre>
+</li>
+</ul>
+<h3 id="1-matches方法"><a href="#1-matches方法" class="headerlink" title="1. matches方法"></a>1. matches方法</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Matches_</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String content <span class="token operator">=</span> <span class="token string">"i am study java"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">".*java.*"</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> isMatches <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>regStr<span class="token punctuation">,</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否整体匹配成功："</span> <span class="token operator">+</span> isMatches<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="八、Matcher类"><a href="#八、Matcher类" class="headerlink" title="八、Matcher类"></a>八、Matcher类</h2><h3 id="1-方法"><a href="#1-方法" class="headerlink" title="1. 方法"></a>1. 方法</h3><pre class=" language-java"><code class="language-java"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//返回以前匹配的初始索引。</span>
+<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token keyword">int</span> group<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//返回在以前的匹配操作期间，由给定组所捕获的子序列的初始索引</span>
+<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//返回最后匹配字符之后的偏移量。</span>
+<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">end</span><span class="token punctuation">(</span><span class="token keyword">int</span> group<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//返回在以前的匹配操作期间，由给定组所捕获子序列的最后字符之后的偏量</span>
+<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">lookingAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//尝试将从区域开头开始的输入序列与该模式匹配</span>
+<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//尝试查找与该模式匹配的输入序列的下一个子序列。</span>
+<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//重置此匹配器，然后尝试查找匹配该模式、从指定索引开始的输入序列的下一个子序列。</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> start<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//</span>
+<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//尝试将整个区域与模式匹配。</span>
+
+<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//实现终端添加和替换步骤。</span>
+    <span class="token keyword">public</span> Matcher <span class="token function">appendReplacement</span><span class="token punctuation">(</span>StringBuffer sb<span class="token punctuation">,</span> String replacement<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">public</span> StringBuffer <span class="token function">appendTail</span><span class="token punctuation">(</span>StringBuffer sb<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//实现终端添加和替换步骤。</span>
+<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//替换模式与给定替换字符串相匹配的输入序列的每个子序列。</span>
+     <span class="token keyword">public</span> String <span class="token function">replaceAll</span><span class="token punctuation">(</span>String replacement<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//替换模式与给定替换字符串匹配的输入序列的第一个子序列。</span>
+     <span class="token keyword">public</span> String <span class="token function">replaceFirst</span><span class="token punctuation">(</span>String replacement<span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//返回指定字符串的字面替换字符串。这个方法返回一个字符串，就像传递给Matcher类的appendReplacement方法一个字面字符串一样工作。   </span>
+     <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">quoteReplacement</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MatcherMethod</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"hellozb 123zb hello0zb hello zb"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到："</span> <span class="token operator">+</span> content<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> matcher<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//整体匹配方法，常用语校验某个字符串是否符合某个规则</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"整体匹配="</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//完成content 有zb 替换成执笔</span>
+        regStr <span class="token operator">=</span> <span class="token string">"zb"</span><span class="token punctuation">;</span>
+        pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//返回的字符串才是替换后的字符串 原来的content不变化</span>
+        String newContent <span class="token operator">=</span> matcher<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"执笔"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"newContent= "</span> <span class="token operator">+</span> newContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"content= "</span> <span class="token operator">+</span> content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="九、String类"><a href="#九、String类" class="headerlink" title="九、String类"></a>九、String类</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">StringReg</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"2000年5月，JDK1.3、JDK1.4 相继发布...."</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 将JDK1.3、JDK1.4 替换成 JDK</span>
+        content <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"JDK1\\.3|JDK1\\.4"</span><span class="token punctuation">,</span><span class="token string">"JDK"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//2. 验证手机号必须是 138 139开头</span>
+        content <span class="token operator">=</span> <span class="token string">"13988888888"</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token string">"1(38|39)\\d{8}"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"验证成功..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"验证失败..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment" spellcheck="true">//3. 分割 按照 # 或者 - 或者~ 或者数字进行分割</span>
+        content <span class="token operator">=</span> <span class="token string">"hello#abc-tom12jack~china"</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> split <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"#|-|~|\\d"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>String s <span class="token operator">:</span> split<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="十、案例"><a href="#十、案例" class="headerlink" title="十、案例"></a>十、案例</h2><h5 id="1-解析URL"><a href="#1-解析URL" class="headerlink" title="1. 解析URL"></a>1. 解析URL</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Homework03</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 3.对一个url进行解析 http://www.sohu.com:8080/abc/index.htm
+         * a)要求得到协议是什么?   http
+         * b)域名是什么?         www.sohu.com
+         * c)端口是健么?         8080
+         * d)文件名是什么?       index.htm
+         */</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"http://www.sohu.com:8080/abc/index.htm"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"^([a-zA-Z]+)://([a-zA-Z.]+):(\\d+)[\\w/]*/([\\w.]+)"</span><span class="token punctuation">;</span>
+
+        Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>matcher<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//整体匹配 如果匹配成功 可以通过group(x), 获取对应分组的内容</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"整体匹配："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到协议："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到域名："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到端口："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"找到文件名："</span> <span class="token operator">+</span> matcher<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"匹配失败..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="2-匹配"><a href="#2-匹配" class="headerlink" title="2. 匹配"></a>2. 匹配</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Homework02</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/**
+         * 2.要求验证是不是整数或者小数
+         *   提示:这个题要考虑正数和负数
+         *   比如:123 -345 34.89 -87.9 -0.01 0.45等
+         */</span>
+        String content <span class="token operator">=</span> <span class="token string">"0.89"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"^[-+]?([1-9]\\d*|0)(\\.\\d+)?$"</span><span class="token punctuation">;</span>
+        Matcher matcher <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"匹配成功..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"匹配失败..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="3-验证邮箱"><a href="#3-验证邮箱" class="headerlink" title="3. 验证邮箱"></a>3. 验证邮箱</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Homework01</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/**
+         * 规定电子邮件规则为
+         * 1．只能有一个@
+         * 2. @前面是用户名,可以是a-z A-Z0-9_-字符
+         * 3. @后面是域名,并且域名只能是英文字母，比如sohu.com或者tsinghua.org.cn
+         * 4、写出对应的正则表达式,验证输入的字符串是否为满足规则
+         */</span>
+
+        String content <span class="token operator">=</span> <span class="token string">"123@shouhu.com"</span><span class="token punctuation">;</span>
+        String regStr <span class="token operator">=</span> <span class="token string">"^[\\w-]+@([a-zA-Z]+\\.)+[a-zA-Z]+$"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//        Pattern pattern = Pattern.compile(regStr);</span>
+<span class="token comment" spellcheck="true">//        Matcher matcher = pattern.matcher(content);</span>
+<span class="token comment" spellcheck="true">//        if (matcher.find()){</span>
+<span class="token comment" spellcheck="true">//            System.out.println("邮箱满足规则...");</span>
+<span class="token comment" spellcheck="true">//        } else {</span>
+<span class="token comment" spellcheck="true">//            System.out.println("邮箱不满足规则...");</span>
+<span class="token comment" spellcheck="true">//        }</span>
+        <span class="token comment" spellcheck="true">//1. String 的matchers 是整体匹配</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>regStr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"邮箱满足规则..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"邮箱不满足规则..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">执笔</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://YiGeFanRen5-2.github.io/undefined/b5e3.html">http://YiGeFanRen5-2.github.io/undefined/b5e3.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">执笔</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">学习笔记</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'soxB39AbN8z3DxDs8sICrtT2-gzGzoHsz',
+        appKey: 'jeLVNJC7qJiagxL1iuQFRSM9',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/undefined/5c27.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="java学习笔记（二十五） - JDBC">
+                        
+                        <span class="card-title">java学习笔记（二十五） - JDBC</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/undefined/460c.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="java学习笔记（二十八）- 算法优化-骑士周游问题">
+                        
+                        <span class="card-title">java学习笔记（二十八）- 算法优化-骑士周游问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+	
+	
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="7371982444"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='list'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">执笔</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">25.5k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+                <span id="sitetime"> Loading ...</span>
+                <script>
+                    var calcSiteTime = function () {
+                        var seconds = 1000;
+                        var minutes = seconds * 60;
+                        var hours = minutes * 60;
+                        var days = hours * 24;
+                        var years = days * 365;
+                        var today = new Date();
+                        var startYear = "2022";
+                        var startMonth = "4";
+                        var startDate = "7";
+                        var startHour = "0";
+                        var startMinute = "0";
+                        var startSecond = "0";
+                        var todayYear = today.getFullYear();
+                        var todayMonth = today.getMonth() + 1;
+                        var todayDate = today.getDate();
+                        var todayHour = today.getHours();
+                        var todayMinute = today.getMinutes();
+                        var todaySecond = today.getSeconds();
+                        var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                        var diff = t2 - t1;
+                        var diffYears = Math.floor(diff / years);
+                        var diffDays = Math.floor((diff / days) - diffYears * 365);
+
+                        // 区分是否有年份.
+                        var language = 'zh-CN';
+                        if (startYear === String(todayYear)) {
+                            document.getElementById("year").innerHTML = todayYear;
+                            var daysTip = 'This site has been running for ' + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                daysTip = '本站已运行 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                daysTip = '本站已運行 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = daysTip;
+                        } else {
+                            document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                            var yearsAndDaysTip = 'This site has been running for ' + diffYears + ' years and '
+                                + diffDays + ' days';
+                            if (language === 'zh-CN') {
+                                yearsAndDaysTip = '本站已运行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            } else if (language === 'zh-HK') {
+                                yearsAndDaysTip = '本站已運行 ' + diffYears + ' 年 ' + diffDays + ' 天';
+                            }
+                            document.getElementById("sitetime").innerHTML = yearsAndDaysTip;
+                        }
+                    }
+
+                    calcSiteTime();
+                </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:1348581040@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1348581040" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1348581040" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+
+	
+
+	<div class="aplayer" 
+	  data-id="2465890057" 
+	  data-server="netease" 
+	  data-type="playlist" 
+	  data-fixed="true" 
+	  data-autoplay="true" 
+	  data-order="random" 
+	  data-volume="0.55" 
+	  data-theme="#cc543a" 
+	  data-preload="auto" >
+  </div>
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+	<script src="/js/click_show_text.js"></script>
+	<script src="/js/FunnyTitle.js"></script>
+	
+	<script type="text/javascript">
+	//只在桌面版网页启用特效
+	var windowWidth = $(window).width();
+	if (windowWidth > 768) {
+		document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+	}
+	</script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/star.js"><\/script>');
+            }
+        </script>
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+	
+	<script type="text/javascript">
+    var OriginTitile=document.title,st;
+	document.addEventListener("visibilitychange",function(){
+        document.hidden?(document.title="ヽ(●-`Д´-)ノ你要玩捉迷藏嘛",clearTimeout(st)):(document.title="(Ő∀Ő3)ノ好哦！",st=setTimeout(function(){document.title=OriginTitile},3e3))
+    })
+</script>
+
+</body>
+
+</html>
+
+
