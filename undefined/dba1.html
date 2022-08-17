@@ -4,16 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java学习笔记（二十八）- 算法优化-骑士周游问题, java,CREO">
-    <meta name="description" content="一、骑士周游
-
-二、回溯 + 贪心算法import java.awt.*;
-import java.util.ArrayList;
-import java.util.Comparator;
-
-/**
- * @author 执笔
- * @ve">
+    <meta name="keywords" content="java学习笔记（十）- 面向对象中级, java,CREO">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -36,7 +28,7 @@ import java.util.Comparator;
     </style>
 
 
-    <title>java学习笔记（二十八）- 算法优化-骑士周游问题 | 执笔のNote</title>
+    <title>java学习笔记（十）- 面向对象中级 | 执笔のNote</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -241,12 +233,12 @@ import java.util.Comparator;
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java学习笔记（二十八）- 算法优化-骑士周游问题</h1>
+                    <h1 class="description center-align post-title">java学习笔记（十）- 面向对象中级</h1>
                 </div>
             </div>
         </div>
@@ -395,28 +387,28 @@ import java.util.Comparator;
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-29
+                    2022-08-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-07-29
+                    2022-08-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    902
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -436,133 +428,7 @@ import java.util.Comparator;
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、骑士周游"><a href="#一、骑士周游" class="headerlink" title="一、骑士周游"></a>一、骑士周游</h2>
-
-<h2 id="二、回溯-贪心算法"><a href="#二、回溯-贪心算法" class="headerlink" title="二、回溯 + 贪心算法"></a>二、回溯 + 贪心算法</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Comparator<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">/**
- * @author 执笔
- * @version 1.0
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HorseChessBoard</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> X  <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表示col</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> Y  <span class="token operator">=</span> <span class="token number">6</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//表示row</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chessBoard <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>Y<span class="token punctuation">]</span><span class="token punctuation">[</span>X<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//棋盘大小</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span><span class="token punctuation">[</span><span class="token punctuation">]</span> visited <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>X <span class="token operator">*</span> Y<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录某个位置是否走过</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> finished <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//是否完成遍历棋盘</span>
-
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token keyword">int</span> row <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> col <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//测试</span>
-        <span class="token keyword">long</span> start <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">traversalChessBoard</span><span class="token punctuation">(</span>chessBoard<span class="token punctuation">,</span> row <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> col <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">long</span> end <span class="token operator">=</span> System<span class="token punctuation">.</span><span class="token function">currentTimeMillis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"时间："</span> <span class="token operator">+</span> <span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//输出当前棋盘的情况</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> rows <span class="token operator">:</span> chessBoard<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> step <span class="token operator">:</span> rows<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//step 表示应该走的第几步</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>step <span class="token operator">+</span> <span class="token string">"\t"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//对ps的各个位置 可以走的下一个位置的次数进行排序 把可能走的下一个位置从小到大排序</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>ArrayList<span class="token operator">&lt;</span>Point<span class="token operator">></span> ps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        ps<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Point<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token annotation punctuation">@Override</span>
-            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Point o1<span class="token punctuation">,</span> Point o2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span>o1<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token function">next</span><span class="token punctuation">(</span>o2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//最核心的算法 遍历棋盘 如果遍历成功 就把 finished设置为true</span>
-    <span class="token comment" spellcheck="true">//并将走的每一步step 记录到chessBoard</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">traversalChessBoard</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chessBoard<span class="token punctuation">,</span> <span class="token keyword">int</span> row<span class="token punctuation">,</span> <span class="token keyword">int</span> col<span class="token punctuation">,</span> <span class="token keyword">int</span> step<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token comment" spellcheck="true">//先把step 记录到 chessBoard</span>
-        chessBoard<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> step<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//把这个位置 设置为已经访问</span>
-        visited<span class="token punctuation">[</span>row <span class="token operator">*</span> X <span class="token operator">+</span> col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//获取当前位置可以走的下一个位置有哪些</span>
-        ArrayList<span class="token operator">&lt;</span>Point<span class="token operator">></span> ps <span class="token operator">=</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// col --> X, row --> Y</span>
-        <span class="token comment" spellcheck="true">//排序</span>
-        <span class="token function">sort</span><span class="token punctuation">(</span>ps<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//遍历</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>ps<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//取出当前ps的第一个位置(点)</span>
-            Point p <span class="token operator">=</span> ps<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//判断该位置是否走过 如果没有走过就递归遍历</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>visited<span class="token punctuation">[</span>p<span class="token punctuation">.</span>y <span class="token operator">*</span> X <span class="token operator">+</span> p<span class="token punctuation">.</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//递归遍历</span>
-                <span class="token function">traversalChessBoard</span><span class="token punctuation">(</span>chessBoard<span class="token punctuation">,</span> p<span class="token punctuation">.</span>y<span class="token punctuation">,</span> p<span class="token punctuation">.</span>x<span class="token punctuation">,</span> step <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//当退出while循环后 是否遍历成功， 如果没有成功就重置相应的值 然后进行回溯</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>step <span class="token operator">&lt;</span> X <span class="token operator">*</span> Y <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>finished<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//重置</span>
-            chessBoard<span class="token punctuation">[</span>row<span class="token punctuation">]</span><span class="token punctuation">[</span>col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-            visited<span class="token punctuation">[</span>row <span class="token operator">*</span> X <span class="token operator">+</span> col<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            finished <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//编写方法，可以获取当前位置 可以走的下一步的所有位置(Point表示 x,y)</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> ArrayList<span class="token operator">&lt;</span>Point<span class="token operator">></span> <span class="token function">next</span><span class="token punctuation">(</span>Point curPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">// curPoint 当前位置点</span>
-
-        <span class="token comment" spellcheck="true">//创建一个ArrayList</span>
-        ArrayList<span class="token operator">&lt;</span>Point<span class="token operator">></span> ps <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//创建一个 Point对象(点/位置) 准备放入到 ps中</span>
-        Point p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//判断在该位置 能否走如下位置 如果可以就将该点(Point) 放入到ps</span>
-        <span class="token comment" spellcheck="true">//判断5点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断6点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断7点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> X <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断0点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> X <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断1点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> X <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断2点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> X <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断3点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//判断4点的位置</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>x <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>x <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>p<span class="token punctuation">.</span>y <span class="token operator">=</span> curPoint<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            ps<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Point</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//这里需要新建一个点 不然会被覆盖</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> ps<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-
+                
                 
             </div>
             <hr/>
@@ -588,7 +454,7 @@ import java.util.Comparator;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://YiGeFanRen5-2.github.io/undefined/460c.html">http://YiGeFanRen5-2.github.io/undefined/460c.html</a>
+                    <a href="http://YiGeFanRen5-2.github.io/undefined/dba1.html">http://YiGeFanRen5-2.github.io/undefined/dba1.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1071,17 +937,18 @@ import java.util.Comparator;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/undefined/b5e3.html">
+                <a href="/undefined/dba1.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="java学习笔记（二十七）- 正则表达式">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="java学习笔记（十）- 面向对象中级">
                         
-                        <span class="card-title">java学习笔记（二十七）- 正则表达式</span>
+                        <span class="card-title">java学习笔记（十）- 面向对象中级</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1091,9 +958,9 @@ import java.util.Comparator;
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1110,6 +977,7 @@ import java.util.Comparator;
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1132,13 +1000,13 @@ import java.util.Comparator;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/undefined/4a1b.html">
+                <a href="/undefined/bae3.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="java学习笔记（二十四） - MySQL数据库">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="java学习笔记（十） - 变量和类方法">
                         
-                        <span class="card-title">java学习笔记（二十四） - MySQL数据库</span>
+                        <span class="card-title">java学习笔记（十） - 变量和类方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1149,7 +1017,7 @@ import java.util.Comparator;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
                             </span>
                         <span class="publish-author">
                             

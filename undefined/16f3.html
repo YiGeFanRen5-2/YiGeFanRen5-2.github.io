@@ -5,7 +5,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="java学习笔记（十一）- 枚举和注解, java,CREO">
-    <meta name="description" content="">
+    <meta name="description" content="一、自定义类实现枚举1. 实现方法
+不需要提供setXxx方法，因为枚举对象值通常为只读
+对枚举对象&amp;#x2F;属性使用final + static共同修饰，实现底层优化
+枚举对象名通常使用全部大写，常量的命名规范
+枚举对象根据需要,也可以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -394,21 +398,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-08-12
+                    2022-08-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    10 分
                 </div>
                 
 
@@ -428,7 +432,312 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="一、自定义类实现枚举"><a href="#一、自定义类实现枚举" class="headerlink" title="一、自定义类实现枚举"></a>一、自定义类实现枚举</h2><h3 id="1-实现方法"><a href="#1-实现方法" class="headerlink" title="1. 实现方法"></a>1. 实现方法</h3><ul>
+<li>不需要提供setXxx方法，因为枚举对象值通常为只读</li>
+<li>对枚举对象&#x2F;属性使用final + static共同修饰，实现底层优化</li>
+<li>枚举对象名通常使用全部大写，常量的命名规范</li>
+<li>枚举对象根据需要,也可以有多个属性</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Season</span><span class="token punctuation">{</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//季节名称</span>
+    <span class="token keyword">private</span> String description<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//季节描述</span>
+<span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> description<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">private</span> <span class="token function">Season</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span>String description<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>description<span class="token operator">=</span> description<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> Season SPRING <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Season</span><span class="token punctuation">(</span><span class="token string">"春天"</span> <span class="token punctuation">,</span><span class="token string">"温暖"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> Season SUMMER <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Season</span><span class="token punctuation">(</span><span class="token string">"夏天"</span><span class="token punctuation">,</span><span class="token string">"炎热"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> Season AUTUMN <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Season</span><span class="token punctuation">(</span><span class="token string">"秋天"</span><span class="token punctuation">,</span><span class="token string">"凉爽"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">static</span> Season WINTER <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Season</span><span class="token punctuation">(</span><span class="token string">"冬天"</span><span class="token punctuation">,</span><span class="token string">"寒冷"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点"></a>2. 特点</h3><ul>
+<li>构造器私有化</li>
+<li>本类内部创建一组对象</li>
+<li>对外暴露对象(通过为对象添加public final static修饰符)</li>
+<li>可以提供get方法，但是不要提供set</li>
+</ul>
+<h2 id="二、enum关键字实现枚举"><a href="#二、enum关键字实现枚举" class="headerlink" title="二、enum关键字实现枚举"></a>二、enum关键字实现枚举</h2><h3 id="1-实现方法-1"><a href="#1-实现方法-1" class="headerlink" title="1. 实现方法"></a>1. 实现方法</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">enum</span> Season2 <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//public final static Season2 SPRING = new Season2("春天", "温暖");</span>
+    <span class="token comment" spellcheck="true">//因为使用了enum ,因此上面的代码可以简化成如下形式</span>
+    <span class="token function">SPRING</span><span class="token punctuation">(</span><span class="token string">"春天"</span><span class="token punctuation">,</span><span class="token string">"温暖"</span><span class="token punctuation">)</span>，
+    <span class="token function">SUMMER</span><span class="token punctuation">(</span><span class="token string">"夏天"</span><span class="token punctuation">,</span> <span class="token string">"炎热"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">AUTUMN</span><span class="token punctuation">(</span><span class="token string">"秋天"</span><span class="token punctuation">,</span> <span class="token string">"凉爽"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">WINTER</span><span class="token punctuation">(</span><span class="token string">"冬天"</span><span class="token punctuation">,</span> <span class="token string">"寒冷"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> <span class="token function">Season2</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String description<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>description <span class="token operator">=</span> description<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//季节名称</span>
+    <span class="token keyword">private</span> String description<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//季节描述</span>
+<span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> String <span class="token function">getDescription</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> description<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-注意事项"><a href="#2-注意事项" class="headerlink" title="2. 注意事项"></a>2. 注意事项</h3><ul>
+<li>当我们使用enum关键字开发个枚举类时， 默认会继承Enum类</li>
+<li>传统的public static final Season2 SPRING &#x3D; new Season2(“春天”, “温暖”);简化成SPRING(“春天”, “温暖”)，这里必须知道，它调用的是哪个构造器</li>
+<li>如果使用无参构造器创建枚举对象，则实参列表和小括号都可以省略</li>
+<li>当有多个枚举对象时，使用,间隔，最后有一个分号结尾</li>
+<li>枚举对象必须放在枚举类的行首</li>
+</ul>
+<h3 id="3-对比"><a href="#3-对比" class="headerlink" title="3. 对比"></a>3. 对比</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//定义了四个对象，固定.</span>
+<span class="token comment" spellcheck="true">// pubLic static final Season SPRING = new Season("春 天"，" 温暖"); </span>
+<span class="token comment" spellcheck="true">// public static final Season WINTER = new Season("冬 天"，"寒冷");</span>
+<span class="token comment" spellcheck="true">// public static final Season AUTUMN = new Season("秋天"， "凉爽");</span>
+<span class="token comment" spellcheck="true">// pubLic static final Season SUMMER = new Season("夏天"，” 炎热");</span>
+<span class="token comment" spellcheck="true">//如果使用了enum来实现枚举类</span>
+<span class="token comment" spellcheck="true">//1. 使用关键字enum替代cLass</span>
+<span class="token comment" spellcheck="true">//2. pubLic static final Season SPRING = new Season("春天"， "温暖")直接使用</span>
+<span class="token comment" spellcheck="true">//   SPRING("春天”，"温暖")解读常量名(实参列表) </span>
+<span class="token comment" spellcheck="true">//3. 如果有多个常量(对象)， 使用,号间隔即可</span>
+<span class="token comment" spellcheck="true">//4. 如果使用enum来实现枚举，要求将定义常量对象，写在前面</span>
+<span class="token function">SPRING</span><span class="token punctuation">(</span><span class="token string">"春天"</span><span class="token punctuation">,</span><span class="token string">"温暖"</span><span class="token punctuation">)</span>，<span class="token function">WINTER</span><span class="token punctuation">(</span><span class="token string">"冬天"</span><span class="token punctuation">,</span> <span class="token string">"寒冷"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">AUTUMN</span><span class="token punctuation">(</span><span class="token string">"秋天"</span><span class="token punctuation">,</span> <span class="token string">"凉爽"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">SUMMER</span><span class="token punctuation">(</span><span class="token string">"夏天"</span><span class="token punctuation">,</span><span class="token string">"炎热"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> string name<span class="token punctuation">;</span>
+<span class="token keyword">private</span> string desc<span class="token punctuation">;</span>
+</code></pre>
+<h3 id="4-enum常用方法"><a href="#4-enum常用方法" class="headerlink" title="4. enum常用方法"></a>4. enum常用方法</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>详细描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>valueOf</td>
+<td>传递枚举类型的Class对象和枚举常量名称给静态方法valueOf， 会得到与参数匹配的枚举常量</td>
+</tr>
+<tr>
+<td>toString</td>
+<td>得到当前枚举常量的名称。你可以通过重写这个方法来使得到的结果更易读</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>在枚举类型中可以直接使用“&#x3D;&#x3D;”来比较两个枚举常量是否相等。Enum提供的这个equals0方法， 也是直接使用“&#x3D;&#x3D;”实现的。它的存在是为了在Set、 List和Map中使用。注意，equals()是不可变的。</td>
+</tr>
+<tr>
+<td>hashCode</td>
+<td>Enum实现了hashCode0来和equals(保持一致。 它也是不可变的。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>得到当前枚举常量的名称</td>
+</tr>
+<tr>
+<td>ordinal</td>
+<td>得到当前枚举常量的次序</td>
+</tr>
+<tr>
+<td>compareTo</td>
+<td>枚举类型实现了Comparable接口,这样可以比较两个枚举常量的大小(按照声明的顺序排列)</td>
+</tr>
+<tr>
+<td>clone</td>
+<td>枚举类型不能被Clone。 为了防止子类实现克隆方法，Enum实现了一个仅抛出CloneNotSupportedException异常的不变Clone()</td>
+</tr>
+<tr>
+<td>getDeclaringClass</td>
+<td>得到枚举常量所属枚举类型的Class对象。可以用它来判断两个枚举常量是否属于同-一个枚举类型</td>
+</tr>
+</tbody></table>
+<pre class=" language-java"><code class="language-java">Season2 autumn <span class="token operator">=</span> Season2<span class="token punctuation">.</span>AUTUMN<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//输出枚举对象的名字</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>autumn<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//ordinal()输出的是该枚举对象的次序/编号，从0开始编号</span>
+<span class="token comment" spellcheck="true">//AUTUMN枚举对象是第三个，因此输出2</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>autumn<span class="token punctuation">.</span><span class="token function">ordinal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//从反编译可以看出 values方法，返回Season2 []</span>
+<span class="token comment" spellcheck="true">//values为隐藏方法，需要反编译进行显示</span>
+<span class="token comment" spellcheck="true">//含有定义的所有枚举对象</span>
+Season2<span class="token punctuation">[</span> <span class="token punctuation">]</span> values <span class="token operator">=</span> Season2<span class="token punctuation">.</span> <span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"===遍历取出枚举对象(增强for)===="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>Season2 season<span class="token operator">:</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//增强for循环</span>
+    System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printLn</span><span class="token punctuation">(</span>season<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//value0f:将字符串转换成枚举对象，要求字符串必须转换为已有的常量名，否则报异常</span>
+<span class="token comment" spellcheck="true">//执行流程</span>
+<span class="token comment" spellcheck="true">//1. 根据你输入的"AUTUMN" 到Season2的枚举对象去查找</span>
+<span class="token comment" spellcheck="true">//2. 如果找到了，就返回，如果没有找到，就报错</span>
+Season2 autumn1 <span class="token operator">=</span> Season2<span class="token punctuation">.</span><span class="token function">value0f</span><span class="token punctuation">(</span><span class="token string">"AUTUMN"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">printLn</span><span class="token punctuation">(</span><span class="token string">"autumn1="</span> <span class="token operator">+</span> autumn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/*
+pubLic final int compareTo(E o) {
+return seLf.ordinal - other.ordinal; 
+}
+Season2.AUTUMN的编号[2] - Season2.SUMMER的编号[3]
+*/</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Season2<span class="token punctuation">.</span>AUTUMN<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>Season2<span class="token punctuation">.</span>SUMMER<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="5-案例"><a href="#5-案例" class="headerlink" title="5. 案例"></a>5. 案例</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EnumExercise02</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Week<span class="token punctuation">[</span><span class="token punctuation">]</span> values <span class="token operator">=</span> Week<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"===所有星期的信息如下==="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//增强for循环</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>Week week <span class="token operator">:</span> values<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>week<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//枚举类</span>
+<span class="token keyword">enum</span> Week <span class="token punctuation">{</span>
+    <span class="token function">MONDAY</span><span class="token punctuation">(</span><span class="token string">"星期一"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">TUESDAY</span><span class="token punctuation">(</span><span class="token string">"星期二"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">WEDNESDAY</span><span class="token punctuation">(</span><span class="token string">"星期三"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">THURSDAY</span><span class="token punctuation">(</span><span class="token string">"星期四"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">FRIDAY</span><span class="token punctuation">(</span><span class="token string">"星期五"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">SATURDAY</span><span class="token punctuation">(</span><span class="token string">"星期六"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">SUNDAY</span><span class="token punctuation">(</span><span class="token string">"星期日"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> String week<span class="token punctuation">;</span>
+
+    <span class="token function">Week</span><span class="token punctuation">(</span>String week<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//构造器  枚举类中  默认private 可以省略</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>week <span class="token operator">=</span> week<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//重写toString方法</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> week<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="6-实现接口"><a href="#6-实现接口" class="headerlink" title="6. 实现接口"></a>6. 实现接口</h3><ul>
+<li><p>使用enum关键字后，就不能再继承其它类了，因为enum会隐式继承Enum，而Java是单继承机制</p>
+</li>
+<li><p>枚举类和普通类一样，可以实现接口</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">enum</span> 类名<span class="token keyword">implements</span> 接口<span class="token number">1</span><span class="token punctuation">,</span>接口<span class="token number">2</span><span class="token punctuation">{</span><span class="token punctuation">}</span> 
+</code></pre>
+</li>
+</ul>
+<h2 id="三、注解"><a href="#三、注解" class="headerlink" title="三、注解"></a>三、注解</h2><ul>
+<li>注解(Annotation)也被称为元数据(Metadata),用于修饰解释包、类、方法、属性、构造器、局部变量等数据信息</li>
+<li>和注释一样，注解不影响程序逻辑，但注解可以被编译或运行，相当于嵌入在代码中的补充信息</li>
+<li>在JavaSE中，注解的使用目的比较简单，例如标记过时的功能，忽略警告等。在JavaEE中注解占据了更重要的角色，例如用来配置应用程序的任何切面，代替java EE旧版中所遗留的繁冗代码和XML配置等。</li>
+</ul>
+<h3 id="1-Annotation"><a href="#1-Annotation" class="headerlink" title="1. Annotation"></a>1. Annotation</h3><ul>
+<li>使用Annotation时要在其前面增加@符号，并把该Annotation当成一个修饰符使用。用于修饰它支持的程序元素</li>
+</ul>
+<h4 id="1-1-Override-重写"><a href="#1-1-Override-重写" class="headerlink" title="1.1 @Override(重写)"></a>1.1 @Override(重写)</h4><ul>
+<li>限定某个方法，是重写父类方法，该注解只能用于方法</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Father</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Father fly.."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Son</span> <span class="token keyword">extends</span> <span class="token class-name">Father</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span> <span class="token comment" spellcheck="true">//说明</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Son fly..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>@Override表示指定重写父类的方法(从编译层面验证)，如果父类没有fly方法，则会报错</li>
+<li>如果不写@Override注解，而父类仍有public void fly(){} ,仍然构成重写</li>
+<li>@Override只能修饰方法，不能修饰其它类，包，属性等等</li>
+<li>查看@Override注解源码为@Target(ElementType.METHOD),说明只能修饰方法</li>
+</ul>
+<h4 id="1-2-Deprecated"><a href="#1-2-Deprecated" class="headerlink" title="1.2 @Deprecated"></a>1.2 <del>@Deprecated</del></h4><ul>
+<li>用于表示某个程序元素（类、方法等）<strong>已过时</strong></li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Deprecated</span>
+<span class="token keyword">class</span> <span class="token class-name">Father</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Deprecated</span>
+    <span class="token keyword">public</span> String rame<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Father fly... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//@Deprecated的说明几点.</span>
+    <span class="token annotation punctuation">@Deprecated</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sing</span><span class="token punctuation">(</span>H<span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Father sing... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Son</span> <span class="token keyword">extends</span> <span class="token class-name">Father</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//Override使用说明</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Son f.y... "</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>可以修饰方法，类，宇段，包，参数等等</li>
+<li>@Deprecated的作用可以做到新旧版本的兼容和过渡</li>
+</ul>
+<h4 id="1-3-SuppressWarnings-抑制警告"><a href="#1-3-SuppressWarnings-抑制警告" class="headerlink" title="1.3 @SuppressWarnings(抑制警告)"></a>1.3 @SuppressWarnings(抑制警告)</h4><ul>
+<li>抑制编译器警告</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"all"</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//抑制所有警告</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cellphone</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testWork</span><span class="token punctuation">(</span>Calculator calculator<span class="token punctuation">,</span> <span class="token keyword">double</span> n1<span class="token punctuation">,</span> <span class="token keyword">double</span> n2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">double</span> res <span class="token operator">=</span> calculator<span class="token punctuation">.</span><span class="token function">work</span><span class="token punctuation">(</span>n1<span class="token punctuation">,</span> n2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"计算的结果为："</span> <span class="token operator">+</span> res<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//1. 当我们不希 望看到这些警告的时候，可以使用SuppressWarnings注解 来抑制警告信息</span>
+<span class="token comment" spellcheck="true">//2. 在{""}中，可以写入你希望抑制(不显示)警告信息</span>
+<span class="token comment" spellcheck="true">//3. 可以指定的警告类型有</span>
+all<span class="token comment" spellcheck="true">//抑制所有警告</span>
+boxing<span class="token comment" spellcheck="true">//抑制与封装/拆装作业相关的警告</span>
+cast<span class="token comment" spellcheck="true">//抑制与强制转型作业相关的警告</span>
+dep<span class="token operator">-</span>ann<span class="token comment" spellcheck="true">//抑制与淘汰注释相关的警告</span>
+deprecation<span class="token comment" spellcheck="true">//抑制与淘汰的相关警告</span>
+fallthrough<span class="token comment" spellcheck="true">//抑制与switch陈述式中遗漏break相关的警告</span>
+<span class="token keyword">finally</span><span class="token comment" spellcheck="true">//抑制与未传回finally区块相关的警告</span>
+hiding<span class="token comment" spellcheck="true">//抑制与隐藏变数的区域变数相关的警告</span>
+incomplete<span class="token operator">-</span><span class="token keyword">switch</span><span class="token comment" spellcheck="true">//,抑制与switch陈述式(enum case)中 遗漏项目相关的警告</span>
+javadoc<span class="token comment" spellcheck="true">//抑制与javadoc相关的警告</span>
+nls<span class="token comment" spellcheck="true">//抑制与非nls字串文字相关的警告</span>
+nuLL<span class="token comment" spellcheck="true">//抑制与空值分析相关的警告</span>
+rawtypes<span class="token comment" spellcheck="true">//抑制与使用raw类型相关的警告,忽略没有指定泛型的警告</span>
+resource<span class="token comment" spellcheck="true">//抑制与使用Closeable类型的资源相关的警告</span>
+restriction<span class="token comment" spellcheck="true">//抑制与使用不建议或禁止参照相关的警告</span>
+serial<span class="token comment" spellcheck="true">//抑制与可序列化的类别遗漏serialVersionUID栏位相关的警告</span>
+<span class="token keyword">static</span><span class="token operator">-</span>access<span class="token comment" spellcheck="true">//抑制与静态存取不正确相关的警告</span>
+<span class="token keyword">static</span><span class="token operator">-</span>method<span class="token comment" spellcheck="true">//抑制与可能宣告为static的方法相关的警告</span>
+<span class="token keyword">super</span><span class="token comment" spellcheck="true">//抑制与置换方法相关但不含super呼叫的警告</span>
+synthetic<span class="token operator">-</span>access<span class="token comment" spellcheck="true">//抑制与内部类别的存取未最佳化相关的警告</span>
+sync<span class="token operator">-</span>override<span class="token comment" spellcheck="true">//抑制因为置换同步方法而遗漏同步化的警告</span>
+unchecked<span class="token comment" spellcheck="true">//忽略没有检查的警告</span>
+unqualified<span class="token operator">-</span>field<span class="token operator">-</span>access<span class="token comment" spellcheck="true">//抑制与栏位存取不合格相关的警告</span>
+unused<span class="token comment" spellcheck="true">//忽略没有使用某个变量的警告</span>
+</code></pre>
+<h2 id="四、元注解"><a href="#四、元注解" class="headerlink" title="四、元注解"></a>四、元注解</h2><h3 id="1-Retention"><a href="#1-Retention" class="headerlink" title="1. Retention"></a>1. Retention</h3><ul>
+<li><p>指定注解的作用范围，三种值：SOURCE、CLASS、RUNTIME</p>
+</li>
+<li><p>只能用于修饰一个Annotation定义，用于指定该Annotation可以保留多长时间，@Rentention包含一个RetentionPolicy 类型的成员变量，使用@Rentention时必须为该value成员变量指定值</p>
+</li>
+</ul>
+<h4 id="1-1-SOURCE"><a href="#1-1-SOURCE" class="headerlink" title="1.1 SOURCE"></a>1.1 SOURCE</h4><ul>
+<li>RetentionPolicy.SOURCE：编译器使用后，直接丢弃这种策略的注释</li>
+</ul>
+<h4 id="1-2-CLASS"><a href="#1-2-CLASS" class="headerlink" title="1.2 CLASS"></a>1.2 CLASS</h4><ul>
+<li>RetentionPolicy.CLASS：编译器将把注释记录在class文件中.当运行Java程序时， JVM不会保留注解。这是默认值</li>
+</ul>
+<h4 id="1-3-RUNTIME"><a href="#1-3-RUNTIME" class="headerlink" title="1.3 RUNTIME"></a>1.3 RUNTIME</h4><ul>
+<li>RetentionPolicy.RUNTIME：编译器将把注释记录在class文件中，当运行Java程序时，JVM会保留注释.程序可以通过反射获取该注释</li>
+</ul>
+<h3 id="2-Target"><a href="#2-Target" class="headerlink" title="2. Target"></a>2. Target</h3><ul>
+<li>指定注解可以用在那些地方</li>
+</ul>
+<h3 id="3-Documented"><a href="#3-Documented" class="headerlink" title="3. Documented"></a>3. Documented</h3><ul>
+<li>指定该注解是否会在javadoc体现</li>
+</ul>
+<h3 id="4-Inherited"><a href="#4-Inherited" class="headerlink" title="4. Inherited"></a>4. Inherited</h3><ul>
+<li><p>子类会继承父类注解</p>
+</li>
+<li><p>定义为Documented的注解必须设置Retention值为RUNTIME</p>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -937,18 +1246,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/undefined/16f3.html">
+                <a href="/undefined/bae3.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="java学习笔记（十一）- 枚举和注解">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="java学习笔记（十） - 变量和类方法">
                         
-                        <span class="card-title">java学习笔记（十一）- 枚举和注解</span>
+                        <span class="card-title">java学习笔记（十） - 变量和类方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -958,9 +1266,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -977,7 +1285,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1235,7 +1542,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">46.4k</span>
+                        class="white-color">53.8k</span>
             
             
             
