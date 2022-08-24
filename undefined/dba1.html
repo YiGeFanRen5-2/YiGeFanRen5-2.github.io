@@ -4,8 +4,17 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="java学习笔记（十）- 面向对象中级, java,CREO">
-    <meta name="description" content="">
+    <meta name="keywords" content="java学习笔记（八）- 面向对象中级, java,CREO">
+    <meta name="description" content="一、包
+包实际上就是创建不同的文件夹&amp;#x2F;目录来保存类文件
+
+1. 语法package com.study;
+//1. package 关键字，表示打包
+//2. com.study表示包名
+
+//引入包
+import 包;
+//案例">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +37,7 @@
     </style>
 
 
-    <title>java学习笔记（十）- 面向对象中级 | 执笔のNote</title>
+    <title>java学习笔记（八）- 面向对象中级 | 执笔のNote</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -233,12 +242,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">java学习笔记（十）- 面向对象中级</h1>
+                    <h1 class="description center-align post-title">java学习笔记（八）- 面向对象中级</h1>
                 </div>
             </div>
         </div>
@@ -394,21 +403,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-08-17
+                    2022-08-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    10 分
                 </div>
                 
 
@@ -428,7 +437,374 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="一、包"><a href="#一、包" class="headerlink" title="一、包"></a>一、包</h2><ul>
+<li>包实际上就是创建不同的文件夹&#x2F;目录来保存类文件</li>
+</ul>
+<h3 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>study<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//1. package 关键字，表示打包</span>
+<span class="token comment" spellcheck="true">//2. com.study表示包名</span>
+
+<span class="token comment" spellcheck="true">//引入包</span>
+<span class="token keyword">import</span> 包<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//案例</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>*<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将java.util包下的所有类都引入</span>
+</code></pre>
+<h3 id="2-作用"><a href="#2-作用" class="headerlink" title="2. 作用"></a>2. 作用</h3><ul>
+<li>区分相同名字的类</li>
+<li>管理类</li>
+<li>控制访问范围</li>
+</ul>
+<h3 id="3-命名规则"><a href="#3-命名规则" class="headerlink" title="3. 命名规则"></a>3. 命名规则</h3><ul>
+<li>只能包含数字、字母、下划线、小圆点，但是不能以数字开头，不能是关键字和保留字</li>
+<li>一般是小写字母+小圆点</li>
+</ul>
+<pre class=" language-java"><code class="language-java">com<span class="token punctuation">.</span>公司名<span class="token punctuation">.</span>项目名<span class="token punctuation">.</span>业务模块名
+    
+<span class="token comment" spellcheck="true">//案例</span>
+com<span class="token punctuation">.</span>sina<span class="token punctuation">.</span>crm<span class="token punctuation">.</span>user<span class="token comment" spellcheck="true">//用户模块</span>
+</code></pre>
+<h3 id="4-常用的包"><a href="#4-常用的包" class="headerlink" title="4. 常用的包"></a>4. 常用的包</h3><pre class=" language-java"><code class="language-java">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>*<span class="token comment" spellcheck="true">//lang包是基本包，默认引入</span>
+java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>*<span class="token comment" spellcheck="true">//util包是系统提供的工具包，工具类，如Scanner</span>
+java<span class="token punctuation">.</span>net<span class="token punctuation">.</span>*<span class="token comment" spellcheck="true">//网络包，网络开发</span>
+java<span class="token punctuation">.</span>awt<span class="token punctuation">.</span>*<span class="token comment" spellcheck="true">//java的界面开发，GUI</span>
+</code></pre>
+<h3 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5. 注意事项"></a>5. 注意事项</h3><ul>
+<li>package的作用是声明当前类所在的包，需要放在class的最上面，一个类中最多只有一句package</li>
+<li>import指令位置放在package的下面，在类定义前面，可以有多句且没有顺序要求</li>
+</ul>
+<h2 id="二、访问修饰符"><a href="#二、访问修饰符" class="headerlink" title="二、访问修饰符"></a>二、访问修饰符</h2><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h3><ul>
+<li>用于控制方法和属性（成员变量）的访问权限（范围），共4种：<ul>
+<li>公开级别：用public修饰,对外公开</li>
+<li>受保护级别：用protected修饰，对子类和同一个包中的类公开</li>
+<li>默认级别：没有修饰符号，向同一个包的类公开</li>
+<li>私有级别：用private修饰，只有类本身可以访问，不对外公开</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-访问范围"><a href="#2-访问范围" class="headerlink" title="2. 访问范围"></a>2. 访问范围</h3><table>
+<thead>
+<tr>
+<th align="center">1</th>
+<th align="center">访问级别</th>
+<th align="center">访问控制修饰符</th>
+<th align="center">同类</th>
+<th align="center">同包</th>
+<th align="center">子类</th>
+<th align="center">不同包</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">2</td>
+<td align="center">公开</td>
+<td align="center">public</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">受保护</td>
+<td align="center">protected</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">默认</td>
+<td align="center">没有修饰符</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">私有</td>
+<td align="center">private</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<h3 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项</h3><ul>
+<li>修饰符可以用来修饰类中的属性，成员方法以及类</li>
+<li>只有默认的和public才能修饰类，并且遵循上述访问权限的特点</li>
+<li>成员方法的访问规则和属性完全一样</li>
+</ul>
+<h2 id="三、面向对象编程三大特征"><a href="#三、面向对象编程三大特征" class="headerlink" title="三、面向对象编程三大特征"></a>三、面向对象编程三大特征</h2><h3 id="1-封装"><a href="#1-封装" class="headerlink" title="1. 封装"></a>1. 封装</h3><ul>
+<li>封装(encapsulation)就是把抽象出的数据[属性]和对数据的操作[方法]封装在一起，数据被保护在内部，程序的其它部分只有通过被授权的操作[方法]，才能对数据进行操作</li>
+<li>封装可以隐藏细节：方法（连接数据库）&lt;–调用（传入参数）</li>
+<li>封装可以对数据进行验证，保证安全合理</li>
+</ul>
+<h4 id="1-1-封装实现步骤"><a href="#1-1-封装实现步骤" class="headerlink" title="1.1 封装实现步骤"></a>1.1 封装实现步骤</h4><ul>
+<li>将属性进行私有化private</li>
+<li>提供一个公共（public）的set方法，get方法</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setXxx</span><span class="token punctuation">(</span>类型 参数名<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//逻辑代码</span>
+    属性 <span class="token operator">=</span> 参数名<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> 数据类型 <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> xxx<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="2-继承"><a href="#2-继承" class="headerlink" title="2. 继承"></a>2. 继承</h3><ul>
+<li>继承可以解决代码复用，当多个类存在相同的属性(变量)和方法时，可以从这些类中抽象出父类，在父类中定义这些相同的属性和方法，所有的子类不需要重新定义这些属性和方法，只需要通过extends来声明继承父类即可</li>
+</ul>
+<h4 id="2-1-语法"><a href="#2-1-语法" class="headerlink" title="2.1 语法"></a>2.1 语法</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> 子类 <span class="token keyword">extends</span> 父类<span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>子类就会自动拥有父类定义的属性和方法</li>
+<li>父类又叫超类，基类</li>
+<li>子类又叫派生类</li>
+</ul>
+<img src="/undefined/dba1/%E7%BB%A7%E6%89%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.png" class title="继承示意图">
+
+<h4 id="2-2-注意事项"><a href="#2-2-注意事项" class="headerlink" title="2.2 注意事项"></a>2.2 注意事项</h4><ul>
+<li><p>子类继承了所有的属性和方法，非私有的属性和方法可以在子类直接访问，但是私有属性和方法不能在子类直接访问，要通过父类提供公共的方法去访问</p>
+</li>
+<li><p>子类必须调用父类的构造器，完成父类的初始化</p>
+</li>
+<li><p>当创建子类对象时，不管使用子类的哪个构造器，默认情况下总会去调用父类的无参构造器，如果父类没有提供无参构造器，则必须在子类的构造器中用super去指定使用父类的哪个构造器完成对父类的初始化工作，否则，编译不会通过</p>
+</li>
+<li><p>如果希望指定去调用父类的某个构造器，则显式的调用一下</p>
+<ul>
+<li><pre class=" language-java"><code class="language-java"><span class="token keyword">super</span><span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>super在使用时，必须放在构造器第一行(super只能在构造器中使用)</p>
+</li>
+<li><p>super()和this()都只能放在构造器第一行，因此这两个方法不能共存在一个构造器</p>
+</li>
+<li><p>java所有的类都是Object的子类，Object类是所有类的基类</p>
+</li>
+<li><p>父类的构造器的调用不限于直接父类，将一直追溯到Object类</p>
+</li>
+<li><p>子类最多只能继承一个父类（直接继承），<strong>java为单继承机制</strong></p>
+</li>
+</ul>
+<h4 id="2-3-内存布局"><a href="#2-3-内存布局" class="headerlink" title="2.3 内存布局"></a>2.3 内存布局</h4><img src="/undefined/dba1/%E7%BB%A7%E6%89%BF%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80.png" class title="继承的内存布局">
+
+<h4 id="2-4-super关键字"><a href="#2-4-super关键字" class="headerlink" title="2.4 super关键字"></a>2.4 super关键字</h4><ul>
+<li>代表父类的引用，用于访问父类的属性、方法、构造器</li>
+</ul>
+<h5 id="2-4-1-语法"><a href="#2-4-1-语法" class="headerlink" title="2.4.1 语法"></a>2.4.1 语法</h5><ul>
+<li><p>访问父类的属性，但是不能访问private属性</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">super</span><span class="token punctuation">.</span>属性名<span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>访问父类的方法，但是不能访问private方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">super</span><span class="token punctuation">.</span>方法名<span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+<li><p>访问父类的构造器</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">super</span><span class="token punctuation">(</span>参数列表<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//只能放在第一句，只能出现一句</span>
+</code></pre>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Text</span> <span class="token keyword">extends</span> <span class="token class-name">A</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">//访问父类的属性 但不能访问父类的private属性 [super.属性名]</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">hi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">.</span>n1 <span class="token operator">+</span> <span class="token keyword">super</span><span class="token punctuation">.</span>n2 <span class="token operator">+</span> <span class="token keyword">super</span><span class="token punctuation">.</span>n3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//访问父类的方法 但不能访问父类的private方法 [super.方法名(形参列表)]</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">text20</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">test100</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">text300</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//</span>
+    <span class="token comment" spellcheck="true">//访问父类的构造器 [super.参数列表]</span>
+    <span class="token comment" spellcheck="true">//只能在构造器中使用 且必须放在第一条语句</span>
+    <span class="token keyword">public</span> <span class="token function">Text</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//super();访问父类的无参构造器</span>
+        <span class="token comment" spellcheck="true">//super("jack");访问父类的形参列表为String类型的有参构造器</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token string">"jack"</span> <span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//访问父类的形参列表为String类型 和 int类型的有参构造器</span>
+
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="2-4-2-注意事项"><a href="#2-4-2-注意事项" class="headerlink" title="2.4.2 注意事项"></a>2.4.2 注意事项</h5><ul>
+<li>分工明确，父类属性由父类初始化，子类属性由子类初始化</li>
+<li>当子类中有和父类的成员（属性和方法）重名时，访问父类的成员，需要通过super</li>
+<li>super的访问不限于直接父类，其访问遵守就近原则</li>
+</ul>
+<h5 id="2-4-3-super和this的比较"><a href="#2-4-3-super和this的比较" class="headerlink" title="2.4.3 super和this的比较"></a>2.4.3 super和this的比较</h5><table>
+<thead>
+<tr>
+<th align="center">No</th>
+<th align="center">区别</th>
+<th align="center">this</th>
+<th align="center">super</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="center">访问属性</td>
+<td align="center">访问本类中的属性，如果本类没有该属性就从父类中查找</td>
+<td align="center">从父类开始查找属性</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">调用方法</td>
+<td align="center">访问本类中的方法，如果本类没有就从父类查找</td>
+<td align="center">从父类开始查找方法</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">调用构造器</td>
+<td align="center">调用本类构造器，必须放在构造器首行</td>
+<td align="center">调用父类的构造器，必须放在子类构造器首行</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">特殊</td>
+<td align="center">表示当前对象</td>
+<td align="center">子类访问父类对象</td>
+</tr>
+</tbody></table>
+<h4 id="2-5-方法重写"><a href="#2-5-方法重写" class="headerlink" title="2.5 方法重写"></a>2.5 方法重写</h4><ul>
+<li>子类有一个方法和父类的某个方法的名称、返回类型、参数一致</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> cryO<span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"动物叫唤。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token keyword">extends</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> cryo<span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"小狗汪汪叫..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="2-5-1-注意事项"><a href="#2-5-1-注意事项" class="headerlink" title="2.5.1 注意事项"></a>2.5.1 注意事项</h5><ul>
+<li>子类的方法的形参列表方法名称，要和父类方法的形参列表，方法名称完全一样</li>
+<li>子类方法的返回类型和父类方法返回类型一样，或者是父类返回类型的子类，比如父类返回类型是 Object ,子类方法返回类型是String</li>
+<li>子类方法不能缩小父类方法的访问权限，但是可以扩大public &gt; protected &gt; 默认 &gt; private</li>
+</ul>
+<h5 id="2-5-2-重载和重写的比较"><a href="#2-5-2-重载和重写的比较" class="headerlink" title="2.5.2 重载和重写的比较"></a>2.5.2 重载和重写的比较</h5><table>
+<thead>
+<tr>
+<th align="center">名称</th>
+<th align="center">发生范围</th>
+<th align="center">方法名</th>
+<th align="center">形参列表</th>
+<th align="center">返回类型</th>
+<th align="center">修饰符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">重载（overload）</td>
+<td align="center">本类</td>
+<td align="center">必须一样</td>
+<td align="center">类型，个数或者顺序至少有一个不同</td>
+<td align="center">无要求</td>
+<td align="center">无要求</td>
+</tr>
+<tr>
+<td align="center">重写（override）</td>
+<td align="center">父子类</td>
+<td align="center">必须一样</td>
+<td align="center">相同</td>
+<td align="center">子类重写的方法，返回类型和父类的返回类型一致，或为其子类</td>
+<td align="center">子类方法不能缩小父类方法的访问范围</td>
+</tr>
+</tbody></table>
+<h3 id="3-多态"><a href="#3-多态" class="headerlink" title="3. 多态"></a>3. 多态</h3><ul>
+<li><p><strong>多态的前提是两个对象（类）存在继承关系</strong></p>
+</li>
+<li><p>一个对象的编译类型和运行类型可以不一致</p>
+</li>
+<li><p>编译类型在定义对象的时候就确定了，不能改变</p>
+</li>
+<li><p>运行类型可以变化</p>
+</li>
+<li><p><strong>编译类型看 &#x3D; 号的左边，运行类型看 &#x3D; 号的右边</strong></p>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java">Animal animal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//animal编译类型是Animal,运行类型Dog</span>
+animal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Cat</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//animal的运行类型变成了Cat,编译类型仍然是 Animal</span>
+</code></pre>
+<h4 id="3-1-向上转型"><a href="#3-1-向上转型" class="headerlink" title="3.1 向上转型"></a>3.1 向上转型</h4><ul>
+<li>父类的引用指向子类的对象</li>
+</ul>
+<h5 id="3-1-1-语法"><a href="#3-1-1-语法" class="headerlink" title="3.1.1 语法"></a>3.1.1 语法</h5><pre class=" language-java"><code class="language-java">父类类型 引用名 <span class="token operator">=</span> <span class="token keyword">new</span> 子类类型<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ul>
+<li>可以盗用父类的所有成员（需遵守访问权限）</li>
+<li>不能调用子类中特有成员</li>
+</ul>
+<h4 id="3-2-向下转型"><a href="#3-2-向下转型" class="headerlink" title="3.2 向下转型"></a>3.2 向下转型</h4><h5 id="3-2-1-语法"><a href="#3-2-1-语法" class="headerlink" title="3.2.1 语法"></a>3.2.1 语法</h5><pre class=" language-jvaa"><code class="language-jvaa">子类类型 引用名 = (子类类型)父类引用;
+</code></pre>
+<ul>
+<li>只能强转父类的引用，不能强转父类的对象</li>
+<li>父类的引用必须指向的是当前目标类型的对象</li>
+<li>向下转型后可以调用子类类型中的所有成员</li>
+</ul>
+<h5 id="3-2-2-注意事项"><a href="#3-2-2-注意事项" class="headerlink" title="3.2.2 注意事项"></a>3.2.2 注意事项</h5><ul>
+<li>属性没有重写，属性值看编译类型</li>
+</ul>
+<pre class=" language-java"><code class="language-java">instanceOf<span class="token comment" spellcheck="true">//比较操作符</span>
+</code></pre>
+<ul>
+<li>用于判断对象的运行类是否为xx类型或xx子类型</li>
+</ul>
+<h5 id="3-2-3-java的动态绑定机制"><a href="#3-2-3-java的动态绑定机制" class="headerlink" title="3.2.3 java的动态绑定机制"></a>3.2.3 java的动态绑定机制</h5><ul>
+<li>当调用对象方法时，该方法会和对象的内存地址&#x2F;运行类型进行绑定</li>
+<li>当调用对象属性时，没有动态绑定机制，哪里声明哪里使用</li>
+</ul>
+<h5 id="3-2-4-多态参数"><a href="#3-2-4-多态参数" class="headerlink" title="3.2.4 多态参数"></a>3.2.4 多态参数</h5><ul>
+<li>方法定义的形参列表为父类类型，实参类型允许为子类类型</li>
+</ul>
+<h2 id="四、Object类"><a href="#四、Object类" class="headerlink" title="四、Object类"></a>四、Object类</h2><h3 id="1-equals方法"><a href="#1-equals方法" class="headerlink" title="1. equals方法"></a>1. equals方法</h3><h4 id="1-1-x3D-x3D-和equals的对比"><a href="#1-1-x3D-x3D-和equals的对比" class="headerlink" title="1.1 &#x3D;&#x3D; 和equals的对比"></a>1.1 &#x3D;&#x3D; 和equals的对比</h4><ul>
+<li><p>&#x3D;&#x3D;：既可以判断基本类型，又可以判断引用类型</p>
+<ul>
+<li><p>如果判断基本类型，判断的是值是否相等</p>
+</li>
+<li><p>如果判断引用类型，判断的是地址是否相等，即判定是不是同一个对象</p>
+</li>
+</ul>
+</li>
+<li><p>equals：只能判断引用类型</p>
+</li>
+<li><p>默认判断的是地址是否相等，子类中往往重写该方法，用于判断内容是否相等</p>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java">Integer integer1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Integer integer2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>integer1 <span class="token operator">==</span>integer2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//false</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>integer1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>integer2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//true</span>
+
+String str1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"hspedlu "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+String str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"hspedu "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1 <span class="token operator">==</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//false</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//true</span>
+</code></pre>
+<h3 id="2-hashCode方法"><a href="#2-hashCode方法" class="headerlink" title="2. hashCode方法"></a>2. hashCode方法</h3><ul>
+<li>提高具有哈希结构的容器的效率</li>
+<li>两个引用，如果指向的是同一个对象，则哈希值肯定是一样的</li>
+<li>两个引用，如果指向的是不同对象，则哈希值是不一样的</li>
+<li>哈希值主要根据地址号来的，不能完全将哈希值等价于地址</li>
+</ul>
+<h3 id="3-toString方法"><a href="#3-toString方法" class="headerlink" title="3. toString方法"></a>3. toString方法</h3><pre class=" language-java"><code class="language-java">全类名 <span class="token operator">+</span> @ <span class="token operator">+</span> 哈希值的十六进制<span class="token comment" spellcheck="true">//一般情况下会重写toString方法，用于返回对象的属性信息</span>
+</code></pre>
+<h3 id="4-finalize方法"><a href="#4-finalize方法" class="headerlink" title="4. finalize方法"></a>4. finalize方法</h3><ul>
+<li>当对象被回收时，系统自动调用该对象的finalize方法。子类可以重写该方法,做一些释放资源的操作</li>
+<li>什么时候被回收：当某个对象没有任何引用时，则jvm就认为这个对象是一个垃圾对象，就会使用垃圾回收机制来销毁该对象，在销毁该对象前，会先调用finalize方法</li>
+<li>垃圾回收机制的调用，是由系统来决定(即有自己的GC算法)，也可以通过System.gc()主动触发垃圾回收机制</li>
+</ul>
+<h2 id="五、断点调试"><a href="#五、断点调试" class="headerlink" title="五、断点调试"></a>五、断点调试</h2><ul>
+<li>在断点调试过程中，是运行状态，以对象的运行类型来执行的</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -937,18 +1313,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/undefined/dba1.html">
+                <a href="/undefined/84c4.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="java学习笔记（十）- 面向对象中级">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="java学习笔记（七） - 面向对象基础">
                         
-                        <span class="card-title">java学习笔记（十）- 面向对象中级</span>
+                        <span class="card-title">java学习笔记（七） - 面向对象基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -958,9 +1333,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -977,7 +1352,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1235,7 +1609,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">53.8k</span>
+                        class="white-color">65.6k</span>
             
             
             
