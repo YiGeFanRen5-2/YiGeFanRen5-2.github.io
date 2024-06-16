@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Solidworks Simulation - 载荷类型</title>
+      <link href="/undefined/13003.html"/>
+      <url>/undefined/13003.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="载荷的类型"><a href="#载荷的类型" class="headerlink" title="载荷的类型"></a>载荷的类型</h2><table style="text-align: center">  <tr>    <th>载荷类型</th>    <th>相关说明</th>  </tr>  <tr>    <td>力/扭矩</td>    <td>对任何方向的面、边线、参考点、顶点和横梁施加均匀分布的力、力矩或扭矩，适用于所有结构算例</td>  </tr>  <tr>    <td>压力</td>    <td>对零件或装配体表面施加均匀或非均匀（可变）压力，适用于结构静态算例、频率算例、扭曲算例、非线性算例和动态算例</td>  </tr>  <tr>    <td>惯性力</td>    <td>对零件或装配体施加离心力或者重力，适用于静态算例、频率算例、扭曲算例和线性算例</td>  </tr>  <tr>    <td>远程载荷</td>    <td>将部分模型简化成质量点</td>  </tr>  <tr>    <td>轴承载荷</td>    <td>对圆柱面间或壳体边线施加正弦变化或者抛物线变化的载荷</td>  </tr></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机械设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 有限元分析 </tag>
+            
+            <tag> Solidworks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Solidworks Simulation - 夹具的类型</title>
+      <link href="/undefined/13002.html"/>
+      <url>/undefined/13002.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="夹具的类型"><a href="#夹具的类型" class="headerlink" title="夹具的类型"></a>夹具的类型</h2><table style="text-align: center">  <tr>    <th>夹具分类</th>    <th>夹具名称</th>    <th>夹具说明</th>  </tr>  <tr>    <td rowspan="4">标准夹具</td>    <td>固定几何体</td>    <td>全自由度约束，比如焊接</td>  </tr>  <tr>    <td>滚柱/滑杆</td>    <td>释放一个方向的平移自由度，比如直线导轨</td>  </tr>  <tr>    <td>固定铰链</td>    <td>释放一个方向的转动自由度，比如销轴</td>  </tr>  <tr>    <td>不可移动（无平移）</td>    <td>释放三个方向的转动自由度，比如铰接</td>  </tr>  <tr>    <td rowspan="5">高级夹具</td>    <td>对称</td>    <td>对符合对称分析要求的模型进行的约束方式</td>  </tr>  <tr>    <td>周期性对称</td>    <td>对符合圆周对称分析要求的模型进行的约束方式</td>  </tr>  <tr>    <td>使用参考几何体</td>    <td>通过线、面对自由度任意方向进行的约束方式</td>  </tr>  <tr>    <td>在平面</td>    <td>通过平面对三个移动方向进行的约束方式</td>  </tr>  <tr>    <td>在圆柱面/球面</td>    <td>圆柱坐标系/球坐标系下对自由度进行的约束方式</td>  </tr></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机械设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 有限元分析 </tag>
+            
+            <tag> Solidworks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Solidworks Simulation - 网格</title>
       <link href="/undefined/40195.html"/>
       <url>/undefined/40195.html</url>
