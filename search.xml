@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>3D模型</title>
+      <link href="/undefined/55082.html"/>
+      <url>/undefined/55082.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="巴雷特"><a href="#巴雷特" class="headerlink" title="巴雷特"></a>巴雷特</h2><details class="folding-tag" red open><summary> 巴雷特 </summary>              <div class="content">              <details class="folding-tag" blue><summary> 2D图纸 </summary>              <div class="content">              <table>  <tr>  <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_all.jpg" alt="总图" style="zoom:25%;" class="rotated-image"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0120240619.jpg" alt="部件1" style="zoom:25%;"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0220240619.jpg" alt="部件2" style="zoom:25%;"></td>  </tr>  <tr>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0320240619.jpg" alt="部件3" style="zoom:25%;" class="rotated-image"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0420240620.jpg" alt="部件4" style="zoom:25%;"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0520240620.jpg" alt="部件5" style="zoom:25%;"></td>  </tr>  <tr>       <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0620240620.jpg" alt="部件6" style="zoom:25%;"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0720240620.jpg" alt="部件7" style="zoom:25%;"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0820240620.jpg" alt="部件8" style="zoom:25%;"></td>  </tr>  <tr>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part0920240620.jpg" alt="部件9" style="zoom:25%;"></td>     <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part1020240620.jpg" alt="部件10" style="zoom:25%;"></td>    <td><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_part1120240620.jpg" alt="部件11" style="zoom:25%;"></td>  </tr></table>              </div>            </details><details class="folding-tag"><summary> 3D模型 </summary>              <div class="content">              <p><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/blt_3D20240620.png" style="zoom:25%;"></p>              </div>            </details>              </div>            </details>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 资料 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AnsysWorkbench - 子弹击穿</title>
+      <link href="/undefined/23230.html"/>
+      <url>/undefined/23230.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="分析模块"><a href="#分析模块" class="headerlink" title="分析模块"></a>分析模块</h2><ul><li>显示动力学模块</li></ul><h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><ul><li>通过slidworks建立模型并导入workbench中</li></ul><h2 id="材料"><a href="#材料" class="headerlink" title="材料"></a>材料</h2><ul><li>工程材料数据中添加steel 1006、结构钢材</li><li>设置子弹材料为结构钢，刚度行为：刚性</li><li>设置靶材料为steel 1006钢材，刚度行为：柔性</li></ul><h2 id="接触"><a href="#接触" class="headerlink" title="接触"></a>接触</h2><ul><li>使用默认接触</li></ul><h2 id="网格"><a href="#网格" class="headerlink" title="网格"></a>网格</h2><ul><li>设置网格4mm</li></ul><h2 id="初始条件"><a href="#初始条件" class="headerlink" title="初始条件"></a>初始条件</h2><ul><li>添加速度Y轴正向5e5mm/s，其余两方向速度0mm/s</li><li>设置靶周边固定约束</li></ul><h2 id="分析设置"><a href="#分析设置" class="headerlink" title="分析设置"></a>分析设置</h2><ul><li>设置结束时间：0.001s4</li></ul><h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><p><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/zddb20240618.gif" alt="应力"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> AnsysWorkbench </tag>
+            
+            <tag> 有限元 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Solidworks Simulation - 载荷类型</title>
       <link href="/undefined/13003.html"/>
       <url>/undefined/13003.html</url>
