@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>估计加玻璃纤维塑料零件的变形量</title>
+      <link href="/undefined/4555.html"/>
+      <url>/undefined/4555.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="模型假设"><a href="#模型假设" class="headerlink" title="模型假设"></a>模型假设</h2><ul><li>一块塑胶平板，一端固定，长度为L，宽度a，厚度b，在受力F的作用下，计算y值</li></ul><p><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/bxljs_20250319_02.png" alt></p><h2 id="分析步骤"><a href="#分析步骤" class="headerlink" title="分析步骤"></a>分析步骤</h2><h3 id="受力分析"><a href="#受力分析" class="headerlink" title="受力分析"></a>受力分析</h3><ul><li>挠度计算公式 <script type="math/tex">{y = F * L^3 / (3 * E * I)}</script></li></ul><p><img src="https://zhib0.oss-cn-hangzhou.aliyuncs.com/img/xblrdjsfs_20250319_01.png" alt="悬臂梁扰度计算公式"></p><ul><li>I截面惯性矩（矩形截面） <script type="math/tex">{I = a * b^3 / 12}</script></li><li>假设模具已经开好确定，则L、a、b无法改变</li></ul><h3 id="假设案例"><a href="#假设案例" class="headerlink" title="假设案例"></a>假设案例</h3><ul><li>假设使用的是PBT材料，其弹性模量E<sub>1</sub>=2600MPa，密度ρ<sub>1</sub>=1.31g/cm<sup>3</sup>；增加的GF玻璃纤维的弹性模量E<sub>2</sub>=70000MPa，密度ρ<sub>2</sub>=2.5g/cm<sup>3</sup></li><li>PBT + GF20其弹性模量E<sub>3</sub>=？</li></ul><h2 id="假设方案"><a href="#假设方案" class="headerlink" title="假设方案"></a>假设方案</h2><h3 id="玻纤横向"><a href="#玻纤横向" class="headerlink" title="玻纤横向"></a>玻纤横向</h3><ul><li>即注塑后产品里面的玻纤都是顺着注塑方向</li><li>材料两端受F力作用</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 方法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SwiftUI常用代码</title>
       <link href="/undefined/31659.html"/>
       <url>/undefined/31659.html</url>
@@ -129,7 +148,7 @@
       <link href="/undefined/35642.html"/>
       <url>/undefined/35642.html</url>
       
-        <content type="html"><![CDATA[<h2 id="普通圆柱压缩弹簧"><a href="#普通圆柱压缩弹簧" class="headerlink" title="普通圆柱压缩弹簧"></a>普通圆柱压缩弹簧</h2><script type="math/tex; mode=display">F = KX</script><script type="math/tex; mode=display">K = G * d^4 / 8 * N * D_{m}^3</script><ul><li><p>G：剪切模量（Mpa），碳钢80000（如65Mn），不锈钢72000</p></li><li><p>d：线径（mm）</p></li><li>N：有效圈数</li><li>D<sub>m</sub>：中径（mm）</li><li>K：弹簧系数</li><li>F：弹簧力（N）</li><li>X：拉压缩量（mm）</li></ul><h2 id="扭簧扭矩"><a href="#扭簧扭矩" class="headerlink" title="扭簧扭矩"></a>扭簧扭矩</h2><script type="math/tex; mode=display">T = P * R = E * d^4 * α  / (3660 * N * D_{m})</script><ul><li>T：扭矩（N·m）</li><li>d：线径（mm）</li><li>E：弹性模量（Mpa）</li><li><p>α：扭转角度（°）</p></li><li><p>N：有效圈数</p></li><li><p>D<sub>m</sub>：中径（mm）</p></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="普通圆柱压缩弹簧"><a href="#普通圆柱压缩弹簧" class="headerlink" title="普通圆柱压缩弹簧"></a>普通圆柱压缩弹簧</h2><script type="math/tex; mode=display">F = KX</script><script type="math/tex; mode=display">K = G * d^4 / （8 * N * D_{m}^3）</script><ul><li><p>G：剪切模量（Mpa），碳钢80000（如65Mn），不锈钢72000</p></li><li><p>d：线径（mm）</p></li><li>N：有效圈数</li><li>D<sub>m</sub>：中径（mm）</li><li>K：弹簧系数</li><li>F：弹簧力（N）</li><li>X：拉压缩量（mm）</li></ul><h2 id="扭簧扭矩"><a href="#扭簧扭矩" class="headerlink" title="扭簧扭矩"></a>扭簧扭矩</h2><script type="math/tex; mode=display">T = P * R = E * d^4 * α  / (3660 * N * D_{m})</script><ul><li>T：扭矩（N·m）</li><li>d：线径（mm）</li><li>E：弹性模量（Mpa）</li><li><p>α：扭转角度（°）</p></li><li><p>N：有效圈数</p></li><li><p>D<sub>m</sub>：中径（mm）</p></li></ul>]]></content>
       
       
       <categories>
